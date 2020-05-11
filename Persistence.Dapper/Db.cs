@@ -28,8 +28,14 @@ namespace Sensemaking.Persistence.Dapper
 
         private static readonly Func<SqlException, Exception> DefaultExceptionConversion = ex => ex;
 
-        internal Db(string connectionString)
+        public Db(string connectionString)
         {
+            Validation.BasedOn(errors =>
+            {
+                if(connectionString.IsNullOrEmpty())
+                  errors.Add("A connection string is required.");
+            });
+
             ConnectionString = connectionString;
             Monitor = new DbMonitor(this);
         }
