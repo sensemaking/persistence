@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics.CodeAnalysis;
 using Dapper;
 using Dapper.NodaTime;
 using Sensemaking.Monitoring;
@@ -10,9 +11,9 @@ namespace Sensemaking.Persistence.Dapper
 {
     public interface IDb : ICanBeMonitored
     {
-        void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
-        IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
-        T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
+        void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure);
+        IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text);
+        T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure);
     }
 
     public class Db : IDb
@@ -38,55 +39,22 @@ namespace Sensemaking.Persistence.Dapper
             return new SqlConnection(connectionString);
         }
 
-        public void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
+        public void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            Try(exceptionConversion, () =>
-            {
-                using (var connection = CreateConnection(ConnectionString))
-                    connection.Execute(sql, param, commandType: commandType, commandTimeout: commandTimeout);
-            });
+            using (var connection = CreateConnection(ConnectionString))
+                connection.Execute(sql, param, commandType: commandType);
         }
 
-        public IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
+        public IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text)
         {
-            return Try(exceptionConversion, () =>
-            {
-                using (var connection = CreateConnection(ConnectionString))
-                    return connection.Query<T>(sql, param, commandType: commandType, commandTimeout: commandTimeout);
-            });
+            using (var connection = CreateConnection(ConnectionString))
+                return connection.Query<T>(sql, param, commandType: commandType);
         }
 
-        public T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
+        public T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            return Try(exceptionConversion, () =>
-            {
-                using (var connection = CreateConnection(ConnectionString))
-                    return resultSelector(connection.QueryMultiple(sql, param, commandType: commandType, commandTimeout: commandTimeout));
-            });
-        }
-
-        private static void Try(Func<SqlException, Exception>? exceptionConversion, Action execution)
-        {
-            try
-            {
-                execution();
-            }
-            catch (SqlException e)
-            {
-                throw (exceptionConversion ?? DefaultExceptionConversion)(e);
-            }
-        }
-
-        private static T Try<T>(Func<SqlException, Exception>? exceptionHandler, Func<T> execution)
-        {
-            try
-            {
-                return execution();
-            }
-            catch (SqlException e)
-            {
-                throw (exceptionHandler ?? DefaultExceptionConversion)(e);
-            }
+            using (var connection = CreateConnection(ConnectionString))
+                return resultSelector(connection.QueryMultiple(sql, param, commandType: commandType));
         }
 
         public IMonitor Monitor { get; private set; }
