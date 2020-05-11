@@ -12,7 +12,7 @@ jobs:
         dotnet-version: 3.1.101
         source-url: https://nuget.pkg.github.com/sensemaking/index.json
       env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.PACKAGE_TOKEN}}
     - name: Build and Test
       run: dotnet test --configuration Release
     - name: Package
