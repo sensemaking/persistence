@@ -13,8 +13,6 @@ jobs:
         source-url: https://nuget.pkg.github.com/sensemaking/index.json
       env:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-    - name: Add Sensemaking Nuget Server
-      run: dotnet nuget add https://nuget.pkg.github.com/sensemaking/index.json
     - name: Build and Test
       run: dotnet test --configuration Release
     - name: Package
