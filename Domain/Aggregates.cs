@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Sensemaking.Domain
@@ -22,7 +21,7 @@ namespace Sensemaking.Domain
         string IAggregate.Id => Id.ToString();
         public T Id { get; }
 
-        public virtual void Saved() { }
+        void IAggregate.Saved() { }
 
         [JsonIgnore]
         public Queue<DomainEvent> Events { get; }
@@ -66,18 +65,18 @@ namespace Sensemaking.Domain
             PublicationStatus = PublicationStatus.NotYetPublished;
         }
 
-        public override void Saved()
+        void IAggregate.Saved()
         {
             HasUnpublishedChanges = true;
         }
 
-        public void Published()
+        void IPublishableAggregate.Published()
         {
             PublicationStatus = PublicationStatus.Published;
             HasUnpublishedChanges = false;
         }
 
-        public void Unpublished()
+        void IPublishableAggregate.Unpublished()
         {
             PublicationStatus = PublicationStatus.Suspended;
             HasUnpublishedChanges = false;

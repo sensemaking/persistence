@@ -11,11 +11,11 @@ namespace Sensemaking.Domain
     
     public class DomainEventDispatcher : IDispatchDomainEvents
     {
-        private readonly IEnumerable<IHandleDomainEvents> _handlers;
+        private readonly IEnumerable<IHandleDomainEvents> handlers;
 
         public DomainEventDispatcher(IEnumerable<IHandleDomainEvents> handlers)
         {
-            _handlers = handlers;
+            this.handlers = handlers;
         }
 
         public void Dispatch(Queue<DomainEvent> events)
@@ -27,7 +27,7 @@ namespace Sensemaking.Domain
 
         private void Dispatch(DomainEvent evnt)
         {
-            _handlers.Where(handler => handler.CanHandle(evnt)).ForEach(handler => handler.Handle(evnt));
+            handlers.Where(handler => handler.CanHandle(evnt)).ForEach(handler => handler.Handle(evnt));
         }
     }
 }
