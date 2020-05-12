@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Persistence.Dapper.Bdd\Persistence.Dapper.Bdd.csproj" />
+    <ProjectReference Include="..\..\Persistence.Bdd.Dapper\Persistence.Bdd.Dapper.csproj" />
   </ItemGroup>
 
 </Project>

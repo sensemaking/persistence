@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Transactions;
 using Sensemaking.Persistence.Dapper;
 
-namespace Persistence.Dapper.Bdd
+namespace Sensemaking.Bdd.Dapper
 {
     public class TestDbUser
     {

@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using Persistence.Dapper.Bdd;
+using Sensemaking.Bdd.Dapper;
 
 namespace Persistence.Dapper.Specs
 {

@@ -1,7 +1,6 @@
 ﻿using System.Transactions;
-using Sensemaking.Bdd;
 
-namespace Persistence.Dapper.Bdd
+namespace Sensemaking.Bdd.Dapper
 {
     public abstract class DbSpecification : Specification
     {
