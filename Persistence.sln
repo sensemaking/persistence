@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Dapper.Bdd", "Persistence.Dapper.Bdd\Persistence.Dapper.Bdd.csproj", "{37152E4F-8DA0-40D0-8824-DD55EBE0400B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{8DC30A4E-9EE3-47E7-BDDE-2029DADC59F2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Dapper", "Specs\Persistence.Dapper\Persistence.Dapper.csproj", "{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +30,16 @@ Global
 		{37152E4F-8DA0-40D0-8824-DD55EBE0400B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37152E4F-8DA0-40D0-8824-DD55EBE0400B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37152E4F-8DA0-40D0-8824-DD55EBE0400B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9} = {8DC30A4E-9EE3-47E7-BDDE-2029DADC59F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {766E5550-B7C1-42B9-8791-644B1B44300B}

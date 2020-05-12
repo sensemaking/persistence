@@ -34,7 +34,7 @@ namespace Sensemaking.Persistence.Dapper
         internal static MonitorInfo GetMonitorInfo(this Db db)
         {
             var connection = new SqlConnectionStringBuilder(db.ConnectionString);
-            return new MonitorInfo("Database Monitor", connection.InitialCatalog, connection.DataSource);
+            return new MonitorInfo("Database Monitor", "Wibble", connection.DataSource);
         }
     }
 }
