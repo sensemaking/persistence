@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper", "Specs\Dapper\Dapp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdd.Dapper", "Bdd.Dapper\Bdd.Dapper.csproj", "{1C203015-5BB3-42CB-A912-0099586F3B13}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Query.Cosmos", "Query.Cosmos\Query.Cosmos.csproj", "{CA45544E-E7C0-4F16-A9DA-16F980E00768}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{1C203015-5BB3-42CB-A912-0099586F3B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C203015-5BB3-42CB-A912-0099586F3B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C203015-5BB3-42CB-A912-0099586F3B13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA45544E-E7C0-4F16-A9DA-16F980E00768}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA45544E-E7C0-4F16-A9DA-16F980E00768}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA45544E-E7C0-4F16-A9DA-16F980E00768}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA45544E-E7C0-4F16-A9DA-16F980E00768}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
