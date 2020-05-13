@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Sensemaking.Domain</AssemblyName>
-    <RootNamespace>Sensemaking.Domain</RootNamespace>
+    <AssemblyName>Sensemaking.Query.Dapper</AssemblyName>
+    <RootNamespace>Sensemaking.Query.Dapper</RootNamespace>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
-    <Description>DDD aggregate, repository and events</Description>
+    <Description>Query object pattern for Dapper</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
   </PropertyGroup>
@@ -20,8 +20,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Sensemaking.Core" Version="1.0.42" />
+    <ProjectReference Include="..\Dapper\Dapper.csproj" />
+    <ProjectReference Include="..\Query\Query.csproj" />
   </ItemGroup>
 
 </Project>

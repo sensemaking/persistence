@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Dapper", "Persistence.Dapper\Persistence.Dapper.csproj", "{0A5018AD-1E0B-40EA-9D3E-96809D781A8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper", "Dapper\Dapper.csproj", "{0A5018AD-1E0B-40EA-9D3E-96809D781A8C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64573428-E41D-4B03-9A9E-D6DBFB00F19C}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,21 +12,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{8DC30A4E-9EE3-47E7-BDDE-2029DADC59F2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Dapper", "Specs\Persistence.Dapper\Persistence.Dapper.csproj", "{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Query", "Query\Query.csproj", "{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Query", "Persistence.Query\Persistence.Query.csproj", "{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Bdd.Dapper", "Persistence.Bdd.Dapper\Persistence.Bdd.Dapper.csproj", "{DF46B077-6745-4950-82D7-7C9EB545469D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Query.Dapper", "Persistence.Query.Dapper\Persistence.Query.Dapper.csproj", "{EA4F6C90-5B03-427B-B82C-C547C4D440C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Query.Dapper", "Query.Dapper\Query.Dapper.csproj", "{EA4F6C90-5B03-427B-B82C-C547C4D440C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Domain.Dapper", "Persistence.Domain.Dapper\Persistence.Domain.Dapper.csproj", "{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Dapper", "Domain.Dapper\Domain.Dapper.csproj", "{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Cosmos", "Persistence.Cosmos\Persistence.Cosmos.csproj", "{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cosmos", "Cosmos\Cosmos.csproj", "{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Domain.Cosmos", "Persistence.Domain.Cosmos\Persistence.Domain.Cosmos.csproj", "{30043D7D-D65B-4158-9A18-30FAE1345ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Cosmos", "Domain.Cosmos\Domain.Cosmos.csproj", "{30043D7D-D65B-4158-9A18-30FAE1345ACF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dapper", "Specs\Dapper\Dapper.csproj", "{DA733487-864C-446E-A2A3-405FFE68E172}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bdd.Dapper", "Bdd.Dapper\Bdd.Dapper.csproj", "{1C203015-5BB3-42CB-A912-0099586F3B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,18 +38,10 @@ Global
 		{0A5018AD-1E0B-40EA-9D3E-96809D781A8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A5018AD-1E0B-40EA-9D3E-96809D781A8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A5018AD-1E0B-40EA-9D3E-96809D781A8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF46B077-6745-4950-82D7-7C9EB545469D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF46B077-6745-4950-82D7-7C9EB545469D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF46B077-6745-4950-82D7-7C9EB545469D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF46B077-6745-4950-82D7-7C9EB545469D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA4F6C90-5B03-427B-B82C-C547C4D440C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA4F6C90-5B03-427B-B82C-C547C4D440C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA4F6C90-5B03-427B-B82C-C547C4D440C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -70,12 +62,20 @@ Global
 		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA733487-864C-446E-A2A3-405FFE68E172}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA733487-864C-446E-A2A3-405FFE68E172}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA733487-864C-446E-A2A3-405FFE68E172}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA733487-864C-446E-A2A3-405FFE68E172}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C203015-5BB3-42CB-A912-0099586F3B13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C203015-5BB3-42CB-A912-0099586F3B13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C203015-5BB3-42CB-A912-0099586F3B13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C203015-5BB3-42CB-A912-0099586F3B13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9} = {8DC30A4E-9EE3-47E7-BDDE-2029DADC59F2}
+		{DA733487-864C-446E-A2A3-405FFE68E172} = {8DC30A4E-9EE3-47E7-BDDE-2029DADC59F2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {766E5550-B7C1-42B9-8791-644B1B44300B}
