@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Sensemaking.Bdd.Dapper</AssemblyName>
     <RootNamespace>Sensemaking.Bdd.Dapper</RootNamespace>
-    <Description>Bdd extensions for integration testing using Dapper</Description>
+    <Description>BDD extensions for integration testing using Dapper</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
   </PropertyGroup>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Bdd" Version="1.0.39" />
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.40" />
   </ItemGroup>
 
 </Project>
