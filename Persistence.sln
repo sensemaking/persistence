@@ -14,13 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Specs", "Specs", "{8DC30A4E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Dapper", "Specs\Persistence.Dapper\Persistence.Dapper.csproj", "{6BE772DF-3E0C-4F2B-8E36-6992EA06E9D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Query", "Persistence.Query\Persistence.Query.csproj", "{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Query", "Persistence.Query\Persistence.Query.csproj", "{31ADD95B-CED7-427B-8C23-DFA8531EF1D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Bdd.Dapper", "Persistence.Bdd.Dapper\Persistence.Bdd.Dapper.csproj", "{DF46B077-6745-4950-82D7-7C9EB545469D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Query.Dapper", "Persistence.Query.Dapper\Persistence.Query.Dapper.csproj", "{EA4F6C90-5B03-427B-B82C-C547C4D440C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Domain.Dapper", "Persistence.Domain.Dapper\Persistence.Domain.Dapper.csproj", "{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,6 +54,10 @@ Global
 		{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF3A0667-B8B7-4A07-ABCB-16DB5C1F3ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7E4FE80-5F09-4F8D-B9E4-17A9E6469659}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Persistence.Bdd.Dapper\Persistence.Bdd.Dapper.csproj" />
+    <ProjectReference Include="..\..\Persistence.Domain.Dapper\Persistence.Domain.Dapper.csproj" />
   </ItemGroup>
 
 </Project>

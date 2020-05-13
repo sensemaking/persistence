@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json;
 
 namespace Sensemaking.Domain
@@ -14,11 +16,15 @@ namespace Sensemaking.Domain
     {
         protected Aggregate(T id)
         {
+            if(id == null)
+                throw new ArgumentException("Aggregate id's cannot be null");
+
             Id = id;
             Events = new Queue<DomainEvent>();
         }
 
         string IAggregate.Id => Id.ToString();
+        [NotNull]
         public T Id { get; }
 
         void IAggregate.Saved() { }

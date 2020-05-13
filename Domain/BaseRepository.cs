@@ -23,9 +23,9 @@ namespace Sensemaking.Domain
     public abstract class BaseRepository : IRepository, IPublishableRepository
     {
         private readonly IDictionary<Type, object> TypeRegistration = new Dictionary<Type, object>();
-        protected readonly IDispatchDomainEvents dispatcher;
+        protected readonly IDispatchDomainEvents? dispatcher;
 
-        protected BaseRepository(IDispatchDomainEvents dispatcher = null)
+        protected BaseRepository(IDispatchDomainEvents? dispatcher = null)
         {
             this.dispatcher = dispatcher;
         }
@@ -43,7 +43,7 @@ namespace Sensemaking.Domain
             if (!TypeRegistration.ContainsKey(typeof(T)))
                 throw new Exception($"{typeof(T).FullName} has not been registered with document db.");
 
-            return (TypeRegistration[typeof(T)] as TypeRegistration<T>);
+            return (TypeRegistration[typeof(T)] as TypeRegistration<T>)!;
         }
 
         protected string CollectionName<T>(string suffix = "") where T : IAggregate

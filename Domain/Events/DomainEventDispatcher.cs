@@ -20,7 +20,7 @@ namespace Sensemaking.Domain
 
         public void Dispatch(Queue<DomainEvent> events)
         {
-            while((events ?? new Queue<DomainEvent>()).Count > 0)
+            while(events.Count > 0)
                 Dispatch(events.Dequeue());
             
         }
