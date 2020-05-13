@@ -1,5 +1,15 @@
 ﻿namespace Sensemaking.Domain
 {
+    public class Saved<T> : DomainEvent where T : IAggregate
+    {
+        public Saved(T wasSaved)
+        {
+            WasSaved = wasSaved;
+        }
+
+        public T WasSaved { get; }
+    }
+
     public class Deleted<T> : DomainEvent where T : IAggregate
     {
         public Deleted(T wasDeleted)

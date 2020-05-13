@@ -57,6 +57,7 @@ namespace Sensemaking.Domain
             SaveAggregate(aggregate);
             aggregate.Saved();
             dispatcher?.Dispatch(aggregate.Events);
+            dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
         }
 
         public void Publish<T>(T aggregate) where T : IPublishableAggregate
@@ -73,7 +74,6 @@ namespace Sensemaking.Domain
             aggregate.Unpublished();
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Unpublished<T>(aggregate) }));
         }
-
 
         public void Delete<T>(T aggregate) where T : IAggregate
         {

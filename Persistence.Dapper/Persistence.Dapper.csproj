@@ -21,8 +21,8 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
-    <PackageReference Include="Dapper-NodaTime" Version="0.1.0" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.40" />
+    <PackageReference Include="NodaTime" Version="2.4.8" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.41" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 

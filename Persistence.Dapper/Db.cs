@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics.CodeAnalysis;
 using Dapper;
-using Dapper.NodaTime;
 using Sensemaking.Monitoring;
 
 namespace Sensemaking.Persistence.Dapper
@@ -20,8 +19,16 @@ namespace Sensemaking.Persistence.Dapper
     {
         static Db()
         {
-            DapperNodaTimeSetup.Register();
-            SqlMapper.AddTypeHandler(new PeriodHandler());
+            SqlMapper.AddTypeHandler(InstantHandler.Default);
+            SqlMapper.AddTypeHandler(LocalDateHandler.Default);
+            SqlMapper.AddTypeHandler(LocalDateTimeHandler.Default);
+            SqlMapper.AddTypeHandler(LocalTimeHandler.Default);
+            SqlMapper.AddTypeHandler(OffsetDateTimeHandler.Default);
+            SqlMapper.AddTypeHandler(NullableInstantHandler.Default);
+            SqlMapper.AddTypeHandler(NullableLocalDateHandler.Default);
+            SqlMapper.AddTypeHandler(NullableLocalDateTimeHandler.Default);
+            SqlMapper.AddTypeHandler(NullableLocalTimeHandler.Default);
+            SqlMapper.AddTypeHandler(NullableOffsetDateTimeHandler.Default);
         }
 
         internal string ConnectionString { get; set; }

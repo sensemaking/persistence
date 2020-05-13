@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
-    <PackageReference Include="Sensemaking.Core" Version="1.0.40" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.41" />
   </ItemGroup>
 
 </Project>
