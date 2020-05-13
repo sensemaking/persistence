@@ -26,6 +26,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Domain.Dapper",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Cosmos", "Persistence.Cosmos\Persistence.Cosmos.csproj", "{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence.Domain.Cosmos", "Persistence.Domain.Cosmos\Persistence.Domain.Cosmos.csproj", "{30043D7D-D65B-4158-9A18-30FAE1345ACF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B70555F-BE6A-4E61-A22C-4C376C36ABE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30043D7D-D65B-4158-9A18-30FAE1345ACF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
