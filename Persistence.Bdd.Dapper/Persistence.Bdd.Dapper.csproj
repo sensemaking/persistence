@@ -21,8 +21,4 @@
     <PackageReference Include="Sensemaking.Bdd" Version="1.0.37" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Persistence.Dapper\Persistence.Dapper.csproj" />
-  </ItemGroup>
-
 </Project>

@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Sensemaking.Domain.Dapper</AssemblyName>
-    <RootNamespace>Sensemaking.Domain.Dapper</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Cosmos</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Cosmos</RootNamespace>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
@@ -18,14 +18,5 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>bin\</OutputPath>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Sensemaking.Serialization" Version="1.0.37" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Persistence.Dapper\Persistence.Dapper.csproj" />
-  </ItemGroup>
 
 </Project>
