@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -6,8 +6,8 @@
     <RootNamespace>Sensemaking.Domain</RootNamespace>
     <Nullable>enable</Nullable>
     <LangVersion>8.0</LangVersion>
+    <Description>DDD Aggregate, Repository and Events</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
-    <Version Condition=" '$(GITHUB_RUN_NUMBER)' == '' ">0.0.1-local</Version>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
   </PropertyGroup>
 
