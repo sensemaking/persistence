@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Sensemaking.Bdd.Dapper</AssemblyName>
     <RootNamespace>Sensemaking.Bdd.Dapper</RootNamespace>
     <Description>BDD extensions for integration testing using Dapper</Description>
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Bdd" Version="1.0.42" />
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.43" />
   </ItemGroup>
 
 </Project>
