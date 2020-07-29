@@ -5,7 +5,6 @@
     <AssemblyName>Sensemaking.Domain</AssemblyName>
     <RootNamespace>Sensemaking.Domain</RootNamespace>
     <Nullable>enable</Nullable>
-    <LangVersion>8.0</LangVersion>
     <Description>DDD aggregate, repository and events</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>

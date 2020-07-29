@@ -5,7 +5,6 @@
     <AssemblyName>Sensemaking.Domain.Cosmos</AssemblyName>
     <RootNamespace>Sensemaking.Domain.Cosmos</RootNamespace>
     <Nullable>enable</Nullable>
-    <LangVersion>8.0</LangVersion>
     <Description>Document repository for aggregates using Cosmos</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>

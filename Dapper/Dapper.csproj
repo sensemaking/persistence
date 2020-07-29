@@ -5,7 +5,6 @@
     <AssemblyName>Sensemaking.Dapper</AssemblyName>
     <RootNamespace>Sensemaking.Dapper</RootNamespace>
     <Nullable>enable</Nullable>
-    <LangVersion>8.0</LangVersion>
     <Description>Connectivity, monitoring, serialization and NodaTime for Dapper</Description>
     <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
     <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
