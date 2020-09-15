@@ -10,6 +10,7 @@ namespace Sensemaking.Domain
         string Id { get; }
         void Saved();
         Queue<DomainEvent> Events { get; }
+
     }
 
     public abstract class Aggregate<T> : IAggregate
