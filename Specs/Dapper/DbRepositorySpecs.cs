@@ -39,7 +39,7 @@ namespace Sensemaking.Dapper.Specs
         public void unpublishes_published_versions_of_aggregates_from_a_sql_database()
         {
             Given(an_aggregate);
-            And(it_is_published);
+            And(it_is_published2);
             And(it_is_un_published);
             When(getting_all_published_versions);
             Then(the_published_version_is_not_retrieved);

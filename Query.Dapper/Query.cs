@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Sensemaking.Dapper;
 
@@ -13,6 +13,6 @@ namespace Sensemaking.Query.Dapper
             database = Query.Database;
         }
 
-        public abstract Task<ImmutableArray<U>> GetResultsAsync(T parameters);
+        public abstract Task<IEnumerable<U>> GetResultsAsync(T parameters);
     }
 }

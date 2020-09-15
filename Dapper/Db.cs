@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using Dapper;
 using Sensemaking.Monitoring;
 
@@ -9,9 +10,9 @@ namespace Sensemaking.Dapper
 {
     public interface IDb : ICanBeMonitored
     {
-        void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure);
-        IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text);
-        T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure);
+        Task ExecuteAsync(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure);
+        Task<IEnumerable<T>> QueryAsync<T>(string sql, object? param = null, CommandType commandType = CommandType.Text);
+        Task<T> QueryAsync<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure);
     }
 
     public class Db : IDb
@@ -51,22 +52,28 @@ namespace Sensemaking.Dapper
             return new SqlConnection(connectionString);
         }
 
-        public void Execute(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure)
+        public async Task ExecuteAsync(string sql, object? param = null,
+            CommandType commandType = CommandType.StoredProcedure)
         {
             using (var connection = CreateConnection(ConnectionString))
-                connection.Execute(sql, param, commandType: commandType);
+                await connection.ExecuteAsync(sql, param, commandType: commandType);
         }
 
-        public IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text)
+        public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object? param = null, CommandType commandType = CommandType.Text)
         {
             using (var connection = CreateConnection(ConnectionString))
-                return connection.Query<T>(sql, param, commandType: commandType);
+                return await connection.QueryAsync<T>(sql, param, commandType: commandType);
         }
 
-        public T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure)
+        public async Task<IEnumerable<T>> QueryAsync<T>((string Sql, object? Parameters) query, CommandType commandType = CommandType.Text)
+        {
+            return await QueryAsync<T>(query.Sql, query.Parameters, commandType);
+        }
+
+        public async Task<T> QueryAsync<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure)
         {
             using (var connection = CreateConnection(ConnectionString))
-                return resultSelector(connection.QueryMultiple(sql, param, commandType: commandType));
+                return resultSelector(await connection.QueryMultipleAsync(sql, param, commandType: commandType));
         }
 
         public IMonitor Monitor { get; private set; }

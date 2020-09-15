@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Sensemaking.Cosmos;
 
 namespace Sensemaking.Domain.Cosmos
@@ -9,40 +11,39 @@ namespace Sensemaking.Domain.Cosmos
 
         public Repository(IDispatchDomainEvents? dispatcher = null) : base(dispatcher) { }
 
-        [return: MaybeNull]
-        public override T Get<T>(string id)
+        public override async Task<T> GetAsync<T>(string id)
         {
-            return Database.GetClient().Get<T>(Database.DatabaseName!, CollectionName<T>(), id);
+            return await Database.GetClient().GetAsync<T>(Database.DatabaseName!, CollectionName<T>(), id)!;
         }
 
-        protected override T[] GetAll<T>()
+        protected override async Task<IEnumerable<T>> GetAllAsync<T>()
         {
-            return Database.GetClient().GetAll<T>(Database.DatabaseName!, CollectionName<T>());
+            return await Database.GetClient().GetAllASync<T>(Database.DatabaseName!, CollectionName<T>());
         }
 
-        protected override void SaveAggregate<T>(T aggregate) 
+        protected override async Task SaveAggregateAsync<T>(T aggregate) 
         {
-            Database.GetClient().Save(Database.DatabaseName!, CollectionName<T>(), aggregate);
+            await Database.GetClient().SaveAsync(Database.DatabaseName!, CollectionName<T>(), aggregate);
         }
 
-        protected override void DeleteAggregate<T>(T aggregate)
+        protected override async Task DeleteAggregateAsync<T>(T aggregate)
         {
-            Database.GetClient().Delete<T>(Database.DatabaseName!, CollectionName<T>(), aggregate.Id);
+            await Database.GetClient().DeleteAsync<T>(Database.DatabaseName!, CollectionName<T>(), aggregate.Id);
         }
 
-        public override T[] GetAllPublished<T>()
+        public override async Task<IEnumerable<T>> GetAllPublishedAsync<T>()
         {
-            return Database.GetClient().GetAll<T>(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix));
+            return await Database.GetClient().GetAllASync<T>(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix));
         }
 
-        protected override void PublishAggregate<T>(T aggregate)
+        protected override async Task PublishAggregateAsync<T>(T aggregate)
         {
-            Database.GetClient().Save(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix), aggregate);
+            await Database.GetClient().SaveAsync(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix), aggregate);
         }
 
-        protected override void UnpublishAggregate<T>(T aggregate)
+        protected override async Task UnpublishAggregateAsync<T>(T aggregate)
         {
-            Database.GetClient().Delete<T>(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix), aggregate.Id);
+            await Database.GetClient().DeleteAsync<T>(Database.DatabaseName!, CollectionName<T>(PublicationCollectionSuffix), aggregate.Id);
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Sensemaking.Dapper
         {
             try
             {
-                Db.Execute("SELECT 1", commandType: CommandType.Text);
+                Db.ExecuteAsync("SELECT 1", commandType: CommandType.Text).GetAwaiter().GetResult();
                 return Monitoring.Availability.Up();
             }
             catch (Exception ex)

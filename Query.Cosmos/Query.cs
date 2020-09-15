@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using Database = Sensemaking.Cosmos.Database;
@@ -8,7 +7,7 @@ namespace Sensemaking.Query.Cosmos
 {
     public abstract class Query<T, U> : IQuery<T, U>
     {
-        public async Task<ImmutableArray<U>> GetResultsAsync(T parameters)
+        public async Task<IEnumerable<U>> GetResultsAsync(T parameters)
         {
             var spec = GetQuerySpecification(parameters);
             var results = new List<U>();
@@ -17,7 +16,7 @@ namespace Sensemaking.Query.Cosmos
             while (iterator.HasMoreResults)
                 results.AddRange(await iterator.ReadNextAsync());
 
-            return results.ToImmutableArray();
+            return results;
         }
 
         protected abstract QuerySpecification GetQuerySpecification(T parameters);

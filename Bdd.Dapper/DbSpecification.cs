@@ -10,7 +10,7 @@ namespace Sensemaking.Bdd.Dapper
         {
             base.before_each();
             scope?.Dispose();
-            scope = new TransactionScope(TransactionScopeOption.RequiresNew);
+            scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         }
 
         protected override void after_each()

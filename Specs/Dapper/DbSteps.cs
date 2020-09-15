@@ -52,17 +52,17 @@ namespace Sensemaking.Dapper.Specs
 
         private void executing()
         {
-            db.Execute($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text);
+            db.ExecuteAsync($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text).GetAwaiter().GetResult();
         }
 
         private void querying()
         {
-            query_result = db.Query<Guid>($"SELECT Id FROM {table_name} WHERE Id = @existing_id", new { existing_id });
+            query_result = db.QueryAsync<Guid>($"SELECT Id FROM {table_name} WHERE Id = @existing_id", new { existing_id }).Result;
         }
 
         private void querying_constructed_result()
         {
-            constructed_query_result = db.Query(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id });
+            constructed_query_result = db.QueryAsync(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id }).Result;
         }
 
         private void it_is_carried_out()

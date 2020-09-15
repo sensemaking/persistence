@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Serialization;
+using System.Threading.Tasks;
 using Sensemaking.Dapper;
 
 namespace Sensemaking.Domain.Dapper
@@ -17,61 +19,60 @@ namespace Sensemaking.Domain.Dapper
             this.db = db;
         }
 
+        public override async Task<T> GetAsync<T>(string id)
+        {
+            return await GetAsync<T>(CollectionName<T>(), id)!;
+        }
+
+        protected override async Task<IEnumerable<T>> GetAllAsync<T>()
+        {
+            return (await db.QueryAsync<string>($"SELECT [Document] FROM [{CollectionName<T>()}]")).Select(x => x.Deserialize<T>());
+        }
+
+        public override async Task<IEnumerable<T>> GetAllPublishedAsync<T>()
+        {
+            return (await db.QueryAsync<string>($"SELECT [Document] FROM [{CollectionName<T>()}{PublicationTableSuffix}]")).Select(x => x.Deserialize<T>());
+        }
+
+        protected override async Task SaveAggregateAsync<T>(T aggregate)
+        {
+            await SaveAsync(CollectionName<T>(), aggregate);
+        }
+
+        protected override async Task DeleteAggregateAsync<T>(T aggregate)
+        {
+            await DeleteAsync(CollectionName<T>(), aggregate);
+        }
+
+        protected override async Task PublishAggregateAsync<T>(T aggregate)
+        {
+            await SaveAsync(CollectionName<T>(PublicationTableSuffix), aggregate);
+        }
+
+        protected override async Task UnpublishAggregateAsync<T>(T aggregate)
+        {
+            await DeleteAsync(CollectionName<T>(PublicationTableSuffix), aggregate);
+        }
+
         [return: MaybeNull]
-        public override T Get<T>(string id)
+        private async Task<T> GetAsync<T>(string table, string id)
         {
-            return Get<T>(CollectionName<T>(), id)!;
+            var result = await db.QueryAsync<string>($"SELECT [Document] FROM [{table}] WHERE Id = @id", new { id });
+            return result.Any() ? result.Single().Deserialize<T>() : default!;
         }
 
-        protected override T[] GetAll<T>()
+        private async Task SaveAsync<T>(string table, T aggregate) where T : IAggregate
         {
-            return db.Query<string>($"SELECT [Document] FROM [{CollectionName<T>()}]").Select(x => x.Deserialize<T>()).ToArray();
-        }
-
-        public override T[] GetAllPublished<T>()
-        {
-            return db.Query<string>($"SELECT [Document] FROM [{CollectionName<T>()}{PublicationTableSuffix}]").Select(x => x.Deserialize<T>()).ToArray();
-        }
-
-        protected override void SaveAggregate<T>(T aggregate)
-        {
-            Save(CollectionName<T>(), aggregate);
-        }
-
-        protected override void DeleteAggregate<T>(T aggregate)
-        {
-            Delete(CollectionName<T>(), aggregate);
-        }
-
-        protected override void PublishAggregate<T>(T aggregate)
-        {
-            Save(CollectionName<T>(PublicationTableSuffix), aggregate);
-        }
-
-        protected override void UnpublishAggregate<T>(T aggregate)
-        {
-            Delete(CollectionName<T>(PublicationTableSuffix),aggregate);
-        }
-
-        [return: MaybeNull]
-        private T Get<T>(string table, string id)
-        {
-            var result = db.Query<string>($"SELECT [Document] FROM [{table}] WHERE Id = @id", new { id });
-            return result.Any() ? result.Single().Deserialize<T>() : default(T)!;
-        }
-
-        private void Save<T>(string table, T aggregate) where T : IAggregate
-        {
-            db.Execute($@"MERGE INTO [{table}] AS target  
+            await db.ExecuteAsync($@"MERGE INTO [{table}] with (holdlock) AS target  
                 USING(SELECT @id, @document) AS source(Id, Document) ON(target.Id = source.Id)
                 WHEN MATCHED THEN UPDATE SET Document = source.Document
                 WHEN NOT MATCHED THEN INSERT(Id, Document) VALUES(source.Id, source.Document);",
             new { id = aggregate.Id, document = aggregate.Serialize() }, CommandType.Text);
         }
 
-        private void Delete<T>(string table, T aggregate) where T : IAggregate
+        private async Task DeleteAsync<T>(string table, T aggregate) where T : IAggregate
         {
-            db.Execute($"DELETE FROM [{ table }] WHERE Id = @id", new { id = aggregate.Id }, CommandType.Text);
+            await db.ExecuteAsync($"DELETE FROM [{ table }] WHERE Id = @id", new { id = aggregate.Id }, CommandType.Text);
         }
     }
 }
