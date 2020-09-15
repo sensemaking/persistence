@@ -1,7 +1,10 @@
-﻿namespace Sensemaking.Query
+﻿using System.Collections.Immutable;
+using System.Threading.Tasks;
+
+namespace Sensemaking.Query
 {
-    public interface IQuery<in T, out U>
+    public interface IQuery<in T, U>
     {
-        U[] GetResults(T parameters);
+        Task<ImmutableArray<U>> GetResultsAsync(T parameters);
     }
 }
