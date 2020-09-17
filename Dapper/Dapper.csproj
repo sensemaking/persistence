@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.122" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.125" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
 
