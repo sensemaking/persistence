@@ -14,11 +14,14 @@ namespace Sensemaking.Domain
 
     public abstract class Aggregate<T> : IAggregate
     {
+        protected Aggregate()
+        {
+            Id = default!;
+            Events = new Queue<DomainEvent>();
+        }
+
         protected Aggregate(T id)
         {
-            if(id == null)
-                throw new ArgumentException("Aggregate id's cannot be null");
-
             Id = id;
             Events = new Queue<DomainEvent>();
         }

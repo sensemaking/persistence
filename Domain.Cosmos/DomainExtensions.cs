@@ -10,8 +10,7 @@ namespace Sensemaking.Domain.Cosmos
     internal static class DomainExtensions
     {
         [return: MaybeNull]
-        internal static async Task<T> GetAsync<T>(this CosmosClient client, string databaseName, string collectionName,
-            string documentId) where T : IAggregate
+        internal static async Task<T> GetAsync<T>(this CosmosClient client, string databaseName, string collectionName, string documentId) where T : IAggregate
         {
             try
             {

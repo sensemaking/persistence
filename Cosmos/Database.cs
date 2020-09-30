@@ -6,9 +6,9 @@ namespace Sensemaking.Cosmos
 {
     public static class Database
     {
-        private static string? EndPoint;
-        private static string? AuthorisationKey;
-        internal static string? DatabaseName;
+        private static string EndPoint = null!;
+        private static string AuthorisationKey = null!;
+        internal static string DatabaseName = null!;
 
         private static readonly Lazy<CosmosClient> Client = new Lazy<CosmosClient>(() => 
             new CosmosClient(EndPoint, AuthorisationKey, new CosmosClientOptions { Serializer = new Serializer() }), 
@@ -29,6 +29,6 @@ namespace Sensemaking.Cosmos
             return Client.Value;
         }
 
-        private static bool IsConfigured => !string.IsNullOrEmpty(EndPoint) && !string.IsNullOrEmpty(AuthorisationKey) && !string.IsNullOrEmpty(DatabaseName);
+        private static bool IsConfigured => !EndPoint.IsNullOrEmpty() && !AuthorisationKey.IsNullOrEmpty() && !DatabaseName.IsNullOrEmpty();
     }
 }

@@ -11,12 +11,10 @@ namespace Sensemaking.Cosmos
     {
         private static readonly Encoding DefaultEncoding = new UTF8Encoding(false, true);
         private readonly JsonSerializer serializer;
-        private readonly JsonSerializerSettings serializerSettings;
 
         public Serializer()
         {
-            this.serializerSettings = Serialization.GetSettings();
-            this.serializer = JsonSerializer.Create(this.serializerSettings);
+            this.serializer = JsonSerializer.Create(Serialization.GetSettings());
         }
 
         public override T FromStream<T>(Stream stream)

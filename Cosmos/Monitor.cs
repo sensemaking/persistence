@@ -5,9 +5,9 @@ namespace Sensemaking.Cosmos
 {
     public class Monitor : InstanceMonitor
     {
-        private static string? EndPoint;
-        private static string? AuthorisationKey;
-        internal static string? DatabaseName;
+        private readonly string EndPoint;
+        private readonly string AuthorisationKey;
+        internal readonly string DatabaseName;
 
         public Monitor(string endPoint, string authenticationKey, string databaseName) : base(new MonitorInfo("Cosmos Monitor", endPoint, databaseName))
         {
@@ -16,7 +16,7 @@ namespace Sensemaking.Cosmos
             DatabaseName = databaseName;
         }
 
-        private static void CheckConnectivity()
+        private void CheckConnectivity()
         {
             using (var cosmosClient = new CosmosClient(EndPoint, AuthorisationKey))
                 cosmosClient.GetDatabase(DatabaseName).ReadAsync().Wait();

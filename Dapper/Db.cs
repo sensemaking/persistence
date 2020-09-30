@@ -33,8 +33,6 @@ namespace Sensemaking.Dapper
 
         internal string ConnectionString { get; set; }
 
-        private static readonly Func<SqlException, Exception> DefaultExceptionConversion = ex => ex;
-
         public Db(string connectionString)
         {
             Validation.BasedOn(errors =>

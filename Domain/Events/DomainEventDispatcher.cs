@@ -22,7 +22,6 @@ namespace Sensemaking.Domain
         {
             while(events.Count > 0)
                 Dispatch(events.Dequeue());
-            
         }
 
         private void Dispatch(DomainEvent evnt)
