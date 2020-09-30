@@ -22,8 +22,7 @@ namespace Sensemaking.Domain.Cosmos
             }
         }
 
-        internal static async Task<IEnumerable<T>> GetAllASync<T>(this CosmosClient client, string databaseName,
-            string collectionName) where T : IAggregate
+        internal static async Task<IEnumerable<T>> GetAllASync<T>(this CosmosClient client, string databaseName, string collectionName) where T : IAggregate
         {
             var  results = new List<T>();
             var iterator = client.GetDatabase(databaseName).GetContainer(collectionName).GetItemQueryIterator<T>();
@@ -33,14 +32,12 @@ namespace Sensemaking.Domain.Cosmos
             return results;
         }
 
-        internal static async Task SaveAsync<T>(this CosmosClient client, string databaseName, string collectionName,
-            T aggregate) where T : IAggregate
+        internal static async Task SaveAsync<T>(this CosmosClient client, string databaseName, string collectionName, T aggregate) where T : IAggregate
         {
             await client.GetDatabase(databaseName).GetContainer(collectionName).UpsertItemAsync(aggregate);
         }
 
-        internal static async Task DeleteAsync<T>(this CosmosClient client, string databaseName, string collectionName,
-            string itemId) where T : IAggregate
+        internal static async Task DeleteAsync<T>(this CosmosClient client, string databaseName, string collectionName, string itemId) where T : IAggregate
         {
             try
             {
