@@ -61,7 +61,7 @@ namespace Sensemaking.Domain.Dapper
             return result.Any() ? result.Single().Deserialize<T>() : default!;
         }
 
-        private async Task SaveAsync<T>(string table, T aggregate) where T : IAggregate
+        private async Task SaveAsync<T>(string table, T aggregate) where T : class, IAggregate
         {
             await db.ExecuteAsync($@"MERGE INTO [{table}] with (holdlock) AS target  
                 USING(SELECT @id, @document) AS source(Id, Document) ON(target.Id = source.Id)
@@ -70,7 +70,7 @@ namespace Sensemaking.Domain.Dapper
             new { id = aggregate.Id, document = aggregate.Serialize() }, CommandType.Text);
         }
 
-        private async Task DeleteAsync<T>(string table, T aggregate) where T : IAggregate
+        private async Task DeleteAsync<T>(string table, T aggregate) where T : class, IAggregate
         {
             await db.ExecuteAsync($"DELETE FROM [{ table }] WHERE Id = @id", new { id = aggregate.Id }, CommandType.Text);
         }

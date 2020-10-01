@@ -7,18 +7,18 @@ namespace Sensemaking.Domain
 {
     public interface IRepository
     {
-        void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : IAggregate;
-        Task<T> GetAsync<T>(string id) where T : IAggregate;
-        Task SaveAsync<T>(T aggregate) where T : IAggregate;
-        Task DeleteAsync<T>(T aggregate) where T : IAggregate;
-        Task DeleteAsync<T>(string id) where T : IAggregate;
+        void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : class, IAggregate;
+        Task<T> GetAsync<T>(string id) where T : class, IAggregate;
+        Task SaveAsync<T>(T aggregate) where T : class, IAggregate;
+        Task DeleteAsync<T>(T aggregate) where T : class, IAggregate;
+        Task DeleteAsync<T>(string id) where T : class, IAggregate;
     }
 
     public interface IPublishableRepository
     {
-        Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate;
-        Task UnpublishAsync<T>(T aggregate) where T : IPublishableAggregate;
-        Task<IEnumerable<T>> GetAllPublishedAsync<T>() where T : IPublishableAggregate;
+        Task PublishAsync<T>(T aggregate) where T : class, IPublishableAggregate;
+        Task UnpublishAsync<T>(T aggregate) where T : class, IPublishableAggregate;
+        Task<IEnumerable<T>> GetAllPublishedAsync<T>() where T : class, IPublishableAggregate;
     }
 
     public abstract class BaseRepository : IRepository, IPublishableRepository
@@ -31,7 +31,7 @@ namespace Sensemaking.Domain
             this.dispatcher = dispatcher;
         }
 
-        public void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : IAggregate
+        public void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : class, IAggregate
         {
             if (TypeRegistration.ContainsKey(typeof(T)))
                 TypeRegistration.Remove(typeof(T));
@@ -39,7 +39,7 @@ namespace Sensemaking.Domain
             TypeRegistration.Add(typeof(T), new TypeRegistration<T>(collection, collectionValidator));
         }
 
-        private TypeRegistration<T> RegistrationFor<T>() where T : IAggregate
+        private TypeRegistration<T> RegistrationFor<T>() where T : class, IAggregate
         {
             if (!TypeRegistration.ContainsKey(typeof(T)))
                 throw new Exception($"{typeof(T).FullName} has not been registered with document db.");
@@ -47,12 +47,12 @@ namespace Sensemaking.Domain
             return (TypeRegistration[typeof(T)] as TypeRegistration<T>)!;
         }
 
-        protected string CollectionName<T>(string suffix = "") where T : IAggregate
+        protected string CollectionName<T>(string suffix = "") where T : class, IAggregate
         {
             return $"{RegistrationFor<T>().Collection}{suffix}";
         }
 
-        public async Task SaveAsync<T>(T aggregate) where T : IAggregate
+        public async Task SaveAsync<T>(T aggregate) where T : class, IAggregate
         {
             RegistrationFor<T>().CollectionValidator?.Validate((await GetAllAsync<T>()).Where(x => x.Id != aggregate.Id).Union(new[] { aggregate }));
             await SaveAggregateAsync(aggregate);
@@ -61,7 +61,7 @@ namespace Sensemaking.Domain
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
         }
 
-        public async Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate
+        public async Task PublishAsync<T>(T aggregate) where T : class, IPublishableAggregate
         {
             await SaveAsync(aggregate);
             await PublishAggregateAsync(aggregate);
@@ -69,33 +69,33 @@ namespace Sensemaking.Domain
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
         }
 
-        public async Task UnpublishAsync<T>(T aggregate) where T : IPublishableAggregate
+        public async Task UnpublishAsync<T>(T aggregate) where T : class, IPublishableAggregate
         {
             await UnpublishAggregateAsync(aggregate);
             aggregate.Unpublished();
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Unpublished<T>(aggregate) }));
         }
 
-        public async Task DeleteAsync<T>(T aggregate) where T : IAggregate
+        public async Task DeleteAsync<T>(T aggregate) where T : class, IAggregate
         {
             await DeleteAggregateAsync(aggregate);
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Deleted<T>(aggregate) }));
         }
 
-        public async Task DeleteAsync<T>(string id) where T : IAggregate
+        public async Task DeleteAsync<T>(string id) where T : class, IAggregate
         {
             var aggregate = await GetAsync<T>(id);
             if (aggregate != null)
                 await DeleteAsync(aggregate);
         }
 
-        public abstract Task<T> GetAsync<T>(string id) where T : IAggregate;
-        protected abstract Task<IEnumerable<T>> GetAllAsync<T>() where T : IAggregate;
-        protected abstract Task SaveAggregateAsync<T>(T aggregate) where T : IAggregate;
-        protected abstract Task DeleteAggregateAsync<T>(T aggregate) where T : IAggregate;
+        public abstract Task<T> GetAsync<T>(string id) where T : class, IAggregate;
+        protected abstract Task<IEnumerable<T>> GetAllAsync<T>() where T : class, IAggregate;
+        protected abstract Task SaveAggregateAsync<T>(T aggregate) where T : class, IAggregate;
+        protected abstract Task DeleteAggregateAsync<T>(T aggregate) where T : class, IAggregate;
 
-        public abstract Task<IEnumerable<T>> GetAllPublishedAsync<T>() where T : IPublishableAggregate;
-        protected abstract Task PublishAggregateAsync<T>(T aggregate) where T : IPublishableAggregate;
-        protected abstract Task UnpublishAggregateAsync<T>(T aggregate) where T : IPublishableAggregate;
+        public abstract Task<IEnumerable<T>> GetAllPublishedAsync<T>() where T : class, IPublishableAggregate;
+        protected abstract Task PublishAggregateAsync<T>(T aggregate) where T : class, IPublishableAggregate;
+        protected abstract Task UnpublishAggregateAsync<T>(T aggregate) where T : class, IPublishableAggregate;
     }
 }
