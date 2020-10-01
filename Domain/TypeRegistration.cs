@@ -2,12 +2,12 @@ using System.Collections.Generic;
 
 namespace Sensemaking.Domain
 {
-    public interface IValidateCollections<in T> where T : class, IAggregate
+    public interface IValidateCollections<in T> where T : IAggregate
     {
         void Validate(IEnumerable<T> aggregates);
     }
 
-    public class TypeRegistration<T> where T : class, IAggregate
+    public class TypeRegistration<T> where T : IAggregate
     {
         public TypeRegistration(string collection, IValidateCollections<T> collectionValidator)
         {

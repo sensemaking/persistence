@@ -1,6 +1,6 @@
 ﻿namespace Sensemaking.Domain
 {
-    public class Saved<T> : DomainEvent where T : class, IAggregate
+    public class Saved<T> : DomainEvent where T : IAggregate
     {
         public Saved(T wasSaved)
         {
@@ -10,7 +10,7 @@
         public T WasSaved { get; }
     }
 
-    public class Deleted<T> : DomainEvent where T : class, IAggregate
+    public class Deleted<T> : DomainEvent where T : IAggregate
     {
         public Deleted(T wasDeleted)
         {
@@ -20,7 +20,7 @@
         public T WasDeleted { get; }
     }
 
-    public class Published<T> : DomainEvent where T : class, IAggregate
+    public class Published<T> : DomainEvent where T : IAggregate
     {
         public Published(T wasPublished)
         {
@@ -30,7 +30,7 @@
         public T WasPublished { get; }
     }
 
-    public class Unpublished<T> : DomainEvent where T : class, IAggregate
+    public class Unpublished<T> : DomainEvent where T : IAggregate
     {
         public Unpublished(T wasUnpublished)
         {
