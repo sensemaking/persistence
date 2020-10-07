@@ -58,7 +58,7 @@ namespace Sensemaking.Domain
             await SaveAggregateAsync(aggregate);
             aggregate.Saved();
             dispatcher?.Dispatch(aggregate.Events);
-            dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
+            dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Saved<T>(aggregate) }));
         }
 
         public async Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate
