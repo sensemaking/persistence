@@ -14,14 +14,14 @@ namespace Sensemaking.Domain
         Task DeleteAsync<T>(string id) where T : IAggregate;
     }
 
-    public interface IPublishableRepository
+    public interface IPublishableRepository : IRepository
     {
         Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate;
         Task UnpublishAsync<T>(T aggregate) where T : IPublishableAggregate;
         Task<IEnumerable<T>> GetAllPublishedAsync<T>() where T : IPublishableAggregate;
     }
 
-    public abstract class BaseRepository : IRepository, IPublishableRepository
+    public abstract class BaseRepository : IPublishableRepository
     {
         private readonly IDictionary<Type, object> TypeRegistration = new Dictionary<Type, object>();
         protected readonly IDispatchDomainEvents? dispatcher;
