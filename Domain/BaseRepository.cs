@@ -54,8 +54,8 @@ namespace Sensemaking.Domain
 
         public async Task SaveAsync<T>(T aggregate) where T : IAggregate
         {
-            RegistrationFor<T>().CollectionValidator?.Validate((await GetAllAsync<T>()).Where(x => x.Id != aggregate.Id).Union(new[] { aggregate }));
-            await SaveAggregateAsync(aggregate);
+            RegistrationFor<T>().CollectionValidator?.Validate((await GetAllAsync<T>().ConfigureAwait(false)).Where(x => x.Id != aggregate.Id).Union(new[] { aggregate }));
+            await SaveAggregateAsync(aggregate).ConfigureAwait(false);
             aggregate.Saved();
             dispatcher?.Dispatch(aggregate.Events);
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Saved<T>(aggregate) }));
@@ -63,30 +63,30 @@ namespace Sensemaking.Domain
 
         public async Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate
         {
-            await SaveAsync(aggregate);
-            await PublishAggregateAsync(aggregate);
+            await SaveAsync(aggregate).ConfigureAwait(false);
+            await PublishAggregateAsync(aggregate).ConfigureAwait(false);
             aggregate.Published();
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
         }
 
         public async Task UnpublishAsync<T>(T aggregate) where T : IPublishableAggregate
         {
-            await UnpublishAggregateAsync(aggregate);
+            await UnpublishAggregateAsync(aggregate).ConfigureAwait(false);
             aggregate.Unpublished();
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Unpublished<T>(aggregate) }));
         }
 
         public async Task DeleteAsync<T>(T aggregate) where T : IAggregate
         {
-            await DeleteAggregateAsync(aggregate);
+            await DeleteAggregateAsync(aggregate).ConfigureAwait(false);
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Deleted<T>(aggregate) }));
         }
 
         public async Task DeleteAsync<T>(string id) where T : IAggregate
         {
-            var aggregate = await GetAsync<T>(id);
+            var aggregate = await GetAsync<T>(id).ConfigureAwait(false);
             if (aggregate != null)
-                await DeleteAsync(aggregate);
+                await DeleteAsync(aggregate).ConfigureAwait(false);
         }
 
         public abstract Task<T> GetAsync<T>(string id) where T : IAggregate;

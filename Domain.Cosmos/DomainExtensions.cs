@@ -13,7 +13,7 @@ namespace Sensemaking.Domain.Cosmos
         {
             try
             {
-                return await client.GetDatabase(databaseName).GetContainer(collectionName).ReadItemAsync<T>(documentId, new PartitionKey(documentId));
+                return await client.GetDatabase(databaseName).GetContainer(collectionName).ReadItemAsync<T>(documentId, new PartitionKey(documentId)).ConfigureAwait(false);
             }
             catch (CosmosException)
             {
@@ -26,21 +26,21 @@ namespace Sensemaking.Domain.Cosmos
             var  results = new List<T>();
             var iterator = client.GetDatabase(databaseName).GetContainer(collectionName).GetItemQueryIterator<T>();
             while (iterator.HasMoreResults)
-                (await iterator.ReadNextAsync()).ForEach(item => results.Add(item));
+                (await iterator.ReadNextAsync().ConfigureAwait(false)).ForEach(item => results.Add(item));
 
             return results;
         }
 
         internal static async Task SaveAsync<T>(this CosmosClient client, string databaseName, string collectionName, T aggregate) where T : IAggregate
         {
-            await client.GetDatabase(databaseName).GetContainer(collectionName).UpsertItemAsync(aggregate);
+            await client.GetDatabase(databaseName).GetContainer(collectionName).UpsertItemAsync(aggregate).ConfigureAwait(false);
         }
 
         internal static async Task DeleteAsync<T>(this CosmosClient client, string databaseName, string collectionName, string itemId) where T : IAggregate
         {
             try
             {
-                await client.GetDatabase(databaseName).GetContainer(collectionName).DeleteItemAsync<T>(itemId, new PartitionKey(itemId));
+                await client.GetDatabase(databaseName).GetContainer(collectionName).DeleteItemAsync<T>(itemId, new PartitionKey(itemId)).ConfigureAwait(false);
             }
             catch (CosmosException exception)
             {

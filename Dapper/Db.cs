@@ -53,25 +53,25 @@ namespace Sensemaking.Dapper
         public async Task ExecuteAsync(string sql, object? param = null,
             CommandType commandType = CommandType.StoredProcedure)
         {
-            using (var connection = CreateConnection(ConnectionString))
-                await connection.ExecuteAsync(sql, param, commandType: commandType);
+            await using (var connection = CreateConnection(ConnectionString))
+                await connection.ExecuteAsync(sql, param, commandType: commandType).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<T>> QueryAsync<T>(string sql, object? param = null, CommandType commandType = CommandType.Text)
         {
-            using (var connection = CreateConnection(ConnectionString))
-                return await connection.QueryAsync<T>(sql, param, commandType: commandType);
+            await using (var connection = CreateConnection(ConnectionString))
+                return await connection.QueryAsync<T>(sql, param, commandType: commandType).ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<T>> QueryAsync<T>((string Sql, object? Parameters) query, CommandType commandType = CommandType.Text)
         {
-            return await QueryAsync<T>(query.Sql, query.Parameters, commandType);
+            return await QueryAsync<T>(query.Sql, query.Parameters, commandType).ConfigureAwait(false);
         }
 
         public async Task<T> QueryAsync<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure)
         {
-            using (var connection = CreateConnection(ConnectionString))
-                return resultSelector(await connection.QueryMultipleAsync(sql, param, commandType: commandType));
+            await using (var connection = CreateConnection(ConnectionString))
+                return resultSelector(await connection.QueryMultipleAsync(sql, param, commandType: commandType).ConfigureAwait(false));
         }
 
         public IMonitor Monitor { get; private set; }

@@ -14,7 +14,7 @@ namespace Sensemaking.Query.Cosmos
             var iterator = Database.GetClient().GetDatabase(Database.DatabaseName!).GetContainer(spec.Container).GetItemQueryIterator<U>(new QueryDefinition(spec.Query));
 
             while (iterator.HasMoreResults)
-                results.AddRange(await iterator.ReadNextAsync());
+                results.AddRange(await iterator.ReadNextAsync().ConfigureAwait(false));
 
             return results;
         }
