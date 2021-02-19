@@ -67,6 +67,7 @@ namespace Sensemaking.Domain
     public abstract class PublishableAggregate<T> : Aggregate<T>, IPublishableAggregate
     {
         public PublicationStatus PublicationStatus { get; private set; }
+
         public bool HasUnpublishedChanges { get; private set; }
 
         protected PublishableAggregate(T id) : base(id)

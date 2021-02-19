@@ -55,24 +55,24 @@ namespace Sensemaking.Domain
         public async Task SaveAsync<T>(T aggregate) where T : IAggregate
         {
             RegistrationFor<T>().CollectionValidator?.Validate((await GetAllAsync<T>().ConfigureAwait(false)).Where(x => x.Id != aggregate.Id).Union(new[] { aggregate }));
-            await SaveAggregateAsync(aggregate).ConfigureAwait(false);
             aggregate.Saved();
+            await SaveAggregateAsync(aggregate).ConfigureAwait(false);
             dispatcher?.Dispatch(aggregate.Events);
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Saved<T>(aggregate) }));
         }
 
         public async Task PublishAsync<T>(T aggregate) where T : IPublishableAggregate
         {
+            aggregate.Published();
             await SaveAsync(aggregate).ConfigureAwait(false);
             await PublishAggregateAsync(aggregate).ConfigureAwait(false);
-            aggregate.Published();
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Published<T>(aggregate) }));
         }
 
         public async Task UnpublishAsync<T>(T aggregate) where T : IPublishableAggregate
         {
-            await UnpublishAggregateAsync(aggregate).ConfigureAwait(false);
             aggregate.Unpublished();
+            await UnpublishAggregateAsync(aggregate).ConfigureAwait(false);
             dispatcher?.Dispatch(new Queue<DomainEvent>(new[] { new Unpublished<T>(aggregate) }));
         }
 
