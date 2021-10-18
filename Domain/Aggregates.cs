@@ -22,7 +22,7 @@ namespace Sensemaking.Domain
 
         protected Aggregate(T id)
         {
-            Id = id;
+            Id = id!;
             Events = new Queue<DomainEvent>();
         }
 
