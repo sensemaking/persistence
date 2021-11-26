@@ -28,7 +28,7 @@ namespace Sensemaking.Domain
 
         string IAggregate.Id => Id.ToString();
         [NotNull]
-        public T Id { get; }
+        public virtual T Id { get; private set; } = default!;
 
         void IAggregate.Saved() { }
 
