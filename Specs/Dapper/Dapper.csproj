@@ -21,7 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Sensemaking.Bdd" Version="1.0.125" />
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.137" />
   </ItemGroup>
 
   <ItemGroup>
