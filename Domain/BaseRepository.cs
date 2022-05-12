@@ -7,7 +7,7 @@ namespace Sensemaking.Domain
 {
     public interface IRepository
     {
-        void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : IAggregate;
+        void Register<T>(string collection, IValidateCollections<T>? collectionValidator) where T : IAggregate;
         Task<T> GetAsync<T>(string id) where T : IAggregate;
         Task SaveAsync<T>(T aggregate) where T : IAggregate;
         Task DeleteAsync<T>(T aggregate) where T : IAggregate;
@@ -31,7 +31,7 @@ namespace Sensemaking.Domain
             this.dispatcher = dispatcher;
         }
 
-        public void Register<T>(string collection, IValidateCollections<T> collectionValidator) where T : IAggregate
+        public void Register<T>(string collection, IValidateCollections<T>? collectionValidator) where T : IAggregate
         {
             if (TypeRegistration.ContainsKey(typeof(T)))
                 TypeRegistration.Remove(typeof(T));

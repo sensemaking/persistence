@@ -9,13 +9,13 @@ namespace Sensemaking.Domain
 
     public class TypeRegistration<T> where T : IAggregate
     {
-        public TypeRegistration(string collection, IValidateCollections<T> collectionValidator)
+        public TypeRegistration(string collection, IValidateCollections<T>? collectionValidator)
         {
             Collection = collection;
             CollectionValidator = collectionValidator;
         }
 
         public string Collection { get; }
-        public IValidateCollections<T> CollectionValidator { get; }
+        public IValidateCollections<T>? CollectionValidator { get; }
     }
 }
