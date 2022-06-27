@@ -26,7 +26,7 @@ namespace Sensemaking.Domain
             Events = new Queue<DomainEvent>();
         }
 
-        string IAggregate.Id => Id.ToString();
+        string IAggregate.Id => Id.ToString()!;
         [NotNull]
         public virtual T Id { get; private set; } = default!;
 
@@ -40,7 +40,7 @@ namespace Sensemaking.Domain
             return Id.ToString() == other.Id.ToString();
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             return obj is Aggregate<T> aggregate && Equals(aggregate);
         }

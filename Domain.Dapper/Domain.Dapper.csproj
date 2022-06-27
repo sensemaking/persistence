@@ -1,30 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Sensemaking.Domain.Dapper</AssemblyName>
-    <RootNamespace>Sensemaking.Domain.Dapper</RootNamespace>
-    <Nullable>enable</Nullable>
-    <Description>Document repository for aggregates using Dapper</Description>
-    <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
-    <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputPath>bin\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<AssemblyName>Sensemaking.Domain.Dapper</AssemblyName>
+		<RootNamespace>Sensemaking.Domain.Dapper</RootNamespace>
+		<Nullable>enable</Nullable>
+		<Description>Document repository for aggregates using Dapper</Description>
+		<RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
+		<Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\</OutputPath>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Sensemaking.Serialization" Version="1.0.162" />
+	</ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\</OutputPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Sensemaking.Serialization" Version="1.0.137" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj" />
-    <ProjectReference Include="..\Dapper\Dapper.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Domain\Domain.csproj" />
+		<ProjectReference Include="..\Dapper\Dapper.csproj" />
+	</ItemGroup>
 
 </Project>

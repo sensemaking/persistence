@@ -1,27 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Sensemaking.Dapper</AssemblyName>
-    <RootNamespace>Sensemaking.Dapper</RootNamespace>
-    <Nullable>enable</Nullable>
-    <Description>Connectivity, monitoring, serialization and NodaTime for Dapper</Description>
-    <RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
-    <Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<OutputPath>bin\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+		<AssemblyName>Sensemaking.Dapper</AssemblyName>
+		<RootNamespace>Sensemaking.Dapper</RootNamespace>
+		<Nullable>enable</Nullable>
+		<Description>Connectivity, monitoring, serialization and NodaTime for Dapper</Description>
+		<RepositoryUrl>https://github.com/sensemaking/persistence.git</RepositoryUrl>
+		<Version Condition=" '$(GITHUB_RUN_NUMBER)' != '' ">1.0.$(GITHUB_RUN_NUMBER)</Version>
+		<TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>bin\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\</OutputPath>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.90" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.137" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.0.123" />
+		<PackageReference Include="Sensemaking.Monitoring" Version="1.0.162" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+	</ItemGroup>
 
 </Project>
