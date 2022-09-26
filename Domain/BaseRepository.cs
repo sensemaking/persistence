@@ -31,7 +31,6 @@ namespace Sensemaking.Domain
             this.dispatcher = dispatcher;
         }
 
-
         public void Register<T>(string collection, IValidateCollections<T>? collectionValidator) where T : IAggregate
         {
             if (TypeRegistration.ContainsKey(typeof(T)))
