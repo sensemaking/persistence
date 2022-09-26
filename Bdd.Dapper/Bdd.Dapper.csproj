@@ -14,7 +14,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Sensemaking.Bdd" Version="1.0.162" />
+		<PackageReference Include="Sensemaking.Bdd" Version="1.0.169" />
 	</ItemGroup>
 
 </Project>
