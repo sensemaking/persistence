@@ -3,13 +3,13 @@ using Sensemaking.Monitoring;
 
 namespace Sensemaking.Cosmos
 {
-    public class Monitor : InstanceMonitor
+    public class CosmosMonitor : InstanceMonitor
     {
         private readonly string EndPoint;
         private readonly string AuthorisationKey;
         internal readonly string DatabaseName;
 
-        public Monitor(string endPoint, string authenticationKey, string databaseName) : base(new MonitorInfo("Cosmos Monitor", endPoint, databaseName))
+        public CosmosMonitor(string endPoint, string authenticationKey, string databaseName) : base(new MonitorInfo("Cosmos Monitor", endPoint, databaseName))
         {
             EndPoint = endPoint;
             AuthorisationKey = authenticationKey;
