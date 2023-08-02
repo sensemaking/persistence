@@ -61,7 +61,7 @@ namespace Sensemaking.Query.Cosmos
             this.specification = specification;
         }
 
-        protected async Task<IEnumerable<T>> GetResults()
+        public async Task<IEnumerable<T>> GetResults()
         {
             return await Querying.GetResults<T>(specification);
         }
@@ -76,7 +76,7 @@ namespace Sensemaking.Query.Cosmos
             this.specification = specification;
         }
 
-        protected async Task<IEnumerable<T>> GetResults(U parameters)
+        public async Task<IEnumerable<T>> GetResults(U parameters)
         {
             return await Querying.GetResults<T>((specification.Container, specification.BuildQuery(parameters)));
         }
