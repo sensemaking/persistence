@@ -56,6 +56,7 @@ namespace Sensemaking.Query.Cosmos
     {
         private readonly (string Container, string Query) specification;
 
+        public Query(string container, string query) : this(new(container, query)) { }
         public Query((string Container, string Query) specification)
         {
             this.specification = specification;
@@ -66,19 +67,20 @@ namespace Sensemaking.Query.Cosmos
             return await Querying.GetResults<T>(specification);
         }
     }
-    
+
     public class ParameterisedQuery<T, U>
     {
-        private readonly (string Container, Func<U, string> BuildQuery) specification;
+        private readonly (string Container, Func<T, string> BuildQuery) specification;
 
-        public ParameterisedQuery((string Container, Func<U, string> BuildQuery) specification)
+        public ParameterisedQuery(string container, Func<T, string> buildQuery) : this(new(container, buildQuery)) { }
+        public ParameterisedQuery((string Container, Func<T, string> BuildQuery) specification)
         {
             this.specification = specification;
         }
 
-        public async Task<IEnumerable<T>> GetResults(U parameters)
+        public async Task<IEnumerable<U>> GetResults(T parameters)
         {
-            return await Querying.GetResults<T>((specification.Container, specification.BuildQuery(parameters)));
+            return await Querying.GetResults<U>((specification.Container, specification.BuildQuery(parameters)));
         }
     }
 }
