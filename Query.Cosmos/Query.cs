@@ -64,7 +64,7 @@ namespace Sensemaking.Query.Cosmos
 
         public async Task<IEnumerable<T>> GetResults()
         {
-            return await Querying.GetResults<T>(specification);
+            return await GetResults<T>(specification);
         }
     }
 
@@ -80,7 +80,7 @@ namespace Sensemaking.Query.Cosmos
 
         public async Task<IEnumerable<U>> GetResults(T parameters)
         {
-            return await Querying.GetResults<U>((specification.Container, specification.BuildQuery(parameters)));
+            return await GetResults<U>((specification.Container, specification.BuildQuery(parameters)));
         }
     }
 }
