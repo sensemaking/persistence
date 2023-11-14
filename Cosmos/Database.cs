@@ -8,7 +8,7 @@ namespace Sensemaking.Cosmos
     {
         internal static string DatabaseName = null!;
 
-        private static Lazy<CosmosClient>? Client = null;
+        private static Lazy<CosmosClient>? Client;
 
         public static void Configure(string endPoint, string authenticationKey, string databaseName)
         {
