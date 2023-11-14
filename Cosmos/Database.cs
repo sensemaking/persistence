@@ -6,29 +6,26 @@ namespace Sensemaking.Cosmos
 {
     public static class Database
     {
-        private static string EndPoint = null!;
-        private static string AuthorisationKey = null!;
         internal static string DatabaseName = null!;
 
-        private static readonly Lazy<CosmosClient> Client = new Lazy<CosmosClient>(() => 
-            new CosmosClient(EndPoint, AuthorisationKey, new CosmosClientOptions { Serializer = new Serializer() }), 
-            LazyThreadSafetyMode.PublicationOnly);
+        private static Lazy<CosmosClient>? Client = null;
 
         public static void Configure(string endPoint, string authenticationKey, string databaseName)
         {
-            EndPoint = endPoint;
-            AuthorisationKey = authenticationKey;
             DatabaseName = databaseName;
+            Client = new Lazy<CosmosClient>(() =>
+                    new CosmosClient(endPoint, authenticationKey, new CosmosClientOptions { Serializer = new Serializer() }),
+                    LazyThreadSafetyMode.PublicationOnly);
         }
 
         internal static CosmosClient GetClient()
         {
-            if (!IsConfigured)
+            if (!IsConfigured())
                 throw new Exception("Please provide end point, authorisation key and database name");
 
-            return Client.Value;
+            return Client!.Value;
         }
 
-        private static bool IsConfigured => !EndPoint.IsNullOrEmpty() && !AuthorisationKey.IsNullOrEmpty() && !DatabaseName.IsNullOrEmpty();
+        private static bool IsConfigured() => Client != null;
     }
 }
