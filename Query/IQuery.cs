@@ -10,6 +10,6 @@ public interface IQuery<in T, U>
 
 public interface IRunQueries
 {
-    Task<IEnumerable<T>> GetResults<T>(string container, string query);
-    Task<IEnumerable<T>> GetResults<T>((string Container, string Query) definition);
+    Task<IEnumerable<T>> Run<T>(string container, string query);
+    Task<IEnumerable<T>> Run<T>((string Container, string Query) definition);
 }

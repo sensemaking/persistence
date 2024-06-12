@@ -102,14 +102,6 @@ public class QueryRunner : IRunQueries
 
     public async Task<IEnumerable<T>> GetResults<T>((string Container, string Query) definition)
     {
-        var results = new List<T>();
-        var iterator = Database.GetClient().GetDatabase(Database.DatabaseName!)
-            .GetContainer(definition.Container)
-            .GetItemQueryIterator<T>(new QueryDefinition(definition.Query));
-
-        while (iterator.HasMoreResults)
-            results.AddRange(await iterator.ReadNextAsync().ConfigureAwait(false));
-
-        return results;
+        return await Querying.GetResults<T>(definition);
     }
 }
