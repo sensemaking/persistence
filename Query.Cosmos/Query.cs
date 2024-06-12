@@ -90,12 +90,6 @@ public class ParameterisedQuery<T, U>
     }
 }
 
-public interface IRunQueries
-{
-    Task<IEnumerable<T>> Run<T>(string container, string query);
-    Task<IEnumerable<T>> Run<T>((string Container, string Query) definition);
-}
-
 public class QueryRunner : IRunQueries
 {
     public Task<IEnumerable<T>> Run<T>(string container, string query) => Run<T>((container, query));
