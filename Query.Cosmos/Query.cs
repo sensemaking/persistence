@@ -92,15 +92,15 @@ public class ParameterisedQuery<T, U>
 
 public interface IRunQueries
 {
-    Task<IEnumerable<T>> GetResults<T>(string container, string query);
-    Task<IEnumerable<T>> GetResults<T>((string Container, string Query) definition);
+    Task<IEnumerable<T>> Run<T>(string container, string query);
+    Task<IEnumerable<T>> Run<T>((string Container, string Query) definition);
 }
 
 public class QueryRunner : IRunQueries
 {
-    public Task<IEnumerable<T>> GetResults<T>(string container, string query) => GetResults<T>((container, query));
+    public Task<IEnumerable<T>> Run<T>(string container, string query) => Run<T>((container, query));
 
-    public async Task<IEnumerable<T>> GetResults<T>((string Container, string Query) definition)
+    public async Task<IEnumerable<T>> Run<T>((string Container, string Query) definition)
     {
         return await Querying.GetResults<T>(definition);
     }
