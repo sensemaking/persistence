@@ -31,7 +31,6 @@
       <ProjectReference Include="..\..\Persistence.Cosmos.Security.KeyAccess\Persistence.Cosmos.Security.KeyAccess.csproj" />
       <ProjectReference Include="..\..\Persistence.Cosmos\Persistence.Cosmos.csproj" />
       <ProjectReference Include="..\Cosmos.Bdd\Cosmos.Bdd.csproj" />
-      <ProjectReference Include="..\Cosmos.Bdd\Cosmos.Bdd.csproj" />
       <ProjectReference Include="..\Persistence\Persistence.csproj" />
     </ItemGroup>
 
