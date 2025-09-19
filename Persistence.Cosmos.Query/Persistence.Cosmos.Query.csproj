@@ -7,7 +7,7 @@
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Common.Persistence.Cosmos.Query</PackageId>
+    <PackageId>Sensemaking.Persistence.Cosmos.Query</PackageId>
     <Authors>First Databank</Authors>
     <Description>Query services using Cosmos</Description>
     <Copyright>Copyright © 2025</Copyright>

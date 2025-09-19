@@ -7,7 +7,7 @@
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Common.Persistence.Security</PackageId>
+    <PackageId>Sensemaking.Persistence.Security</PackageId>
     <Authors>First Databank</Authors>
     <Description>Persistence security services</Description>
     <Copyright>Copyright © 2025</Copyright>

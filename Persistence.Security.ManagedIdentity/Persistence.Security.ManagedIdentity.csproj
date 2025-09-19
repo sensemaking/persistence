@@ -7,7 +7,7 @@
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Common.Persistence.Security.ManagedIdentity</PackageId>
+    <PackageId>Sensemaking.Persistence.Security.ManagedIdentity</PackageId>
     <Authors>First Databank</Authors>
     <Description>Persistence security services for managed identity</Description>
     <Copyright>Copyright © 2025</Copyright>

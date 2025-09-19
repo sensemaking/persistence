@@ -7,7 +7,7 @@
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Common.Persistence.Dapper.Domain</PackageId>
+    <PackageId>Sensemaking.Persistence.Dapper.Domain</PackageId>
     <Authors>First Databank</Authors>
     <Description>Dapper services for domains</Description>
     <Copyright>Copyright © 2025</Copyright>

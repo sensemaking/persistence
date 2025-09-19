@@ -7,7 +7,7 @@
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Common.Persistence.Cosmos</PackageId>
+    <PackageId>Sensemaking.Persistence.Cosmos</PackageId>
     <Authors>First Databank</Authors>
     <Description>Basic Cosmos access, configuration and monitoring</Description>
     <Copyright>Copyright © 2025</Copyright>
