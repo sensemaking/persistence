@@ -2,7 +2,7 @@
 using System.Collections.Immutable;
 using System.Linq;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     internal interface IRespondToTransitions
     {
@@ -20,13 +20,13 @@ namespace Fdb.Rx.Domain
         public virtual void EditedBy(User user)
         {
             if (Lifecycle == ContentLifecycles.Retired && user.IsHuman) throw new ValidationException("Reactivate content before making changes.");
-            
+
             EditList = EditList.Add(user);
 
             if (user.IsHuman)
                 ReadyForQc = false;
 
-            if(EditList.All(x => x.IsSystem))
+            if (EditList.All(x => x.IsSystem))
                 ReadyForQc = Lifecycle != ContentLifecycles.Retired;
         }
 
@@ -34,11 +34,11 @@ namespace Fdb.Rx.Domain
         {
             Validation.BasedOn((errors) =>
             {
-                if(user.IsSystem) errors.Add("System users cannot make content ready for qc.");
+                if (user.IsSystem) errors.Add("System users cannot make content ready for qc.");
 
-                if(Lifecycle == ContentLifecycles.Retired) errors.Add("Retired content cannot be made ready for qc.");
+                if (Lifecycle == ContentLifecycles.Retired) errors.Add("Retired content cannot be made ready for qc.");
 
-                if(!CanBeMadeReadyForQc) errors.Add("Content must have been edited to be made ready for qc.");
+                if (!CanBeMadeReadyForQc) errors.Add("Content must have been edited to be made ready for qc.");
             });
 
             ReadyForQc = true;
@@ -48,17 +48,17 @@ namespace Fdb.Rx.Domain
         {
             Validation.BasedOn((errors) =>
             {
-                if(user.IsSystem)
-                    if(CreatedBy.IsHuman)
+                if (user.IsSystem)
+                    if (CreatedBy.IsHuman)
                         errors.Add("System users cannot qc content that was not system created.");
-                    else if(HasBeenLive && Lifecycle == ContentLifecycles.Suspended)
+                    else if (HasBeenLive && Lifecycle == ContentLifecycles.Suspended)
                         errors.Add("System users cannot qc content once it has been live.");
 
-                if(Lifecycle == ContentLifecycles.Retired) errors.Add("Retired content cannot be qcd.");
+                if (Lifecycle == ContentLifecycles.Retired) errors.Add("Retired content cannot be qcd.");
 
-                if(!ReadyForQc) errors.Add("Content is not yet ready for qc.");
+                if (!ReadyForQc) errors.Add("Content is not yet ready for qc.");
 
-                if(LastHumanEditor() == user) errors.Add("You cannot qc as you are the last person to edit the content.");
+                if (LastHumanEditor() == user) errors.Add("You cannot qc as you are the last person to edit the content.");
             });
 
             Lifecycle = ContentLifecycles.Live;
@@ -74,7 +74,7 @@ namespace Fdb.Rx.Domain
                 if (Lifecycle == ContentLifecycles.New) errors.Add("New content cannot be suspended.");
 
                 if (Lifecycle == ContentLifecycles.Retired) errors.Add("Retired content cannot be suspended.");
-    
+
                 if (!user.IsHumanOrCreatingSystemUser(CreatedBy)) errors.Add("System users cannot suspend content unless they created it.");
 
             });
@@ -84,7 +84,7 @@ namespace Fdb.Rx.Domain
 
         public virtual void Retire<TU>(TU aggregate, User user) where TU : IAggregate?
         {
-            Validation.BasedOn((errors) => { if(!user.IsHumanOrCreatingSystemUser(CreatedBy)) errors.Add("System users cannot retire content unless they created it."); });
+            Validation.BasedOn((errors) => { if (!user.IsHumanOrCreatingSystemUser(CreatedBy)) errors.Add("System users cannot retire content unless they created it."); });
 
             Lifecycle = ContentLifecycles.Retired;
             ReadyForQc = false;
@@ -94,9 +94,9 @@ namespace Fdb.Rx.Domain
         {
             Validation.BasedOn((errors) =>
             {
-                if(user.IsSystem) errors.Add("System users cannot reactivate content.");
+                if (user.IsSystem) errors.Add("System users cannot reactivate content.");
 
-                if(Lifecycle != ContentLifecycles.Retired) errors.Add("Only retired content can be reactivated.");
+                if (Lifecycle != ContentLifecycles.Retired) errors.Add("Only retired content can be reactivated.");
             });
 
             Lifecycle = HasBeenLive ? ContentLifecycles.Suspended : ContentLifecycles.New;
@@ -117,10 +117,10 @@ namespace Fdb.Rx.Domain
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            if(CanBeMadeReadyForQc)
+            if (CanBeMadeReadyForQc)
                 transitions |= Domain.Transitions.MakeReadyForQc;
 
-            if(ReadyForQc)
+            if (ReadyForQc)
                 transitions |= Domain.Transitions.Qc;
 
             return transitions;

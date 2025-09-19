@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos.Query.Sql;
+namespace Sensemaking.Persistence.Cosmos.Query.Sql;
 
 public interface IRunQueries
 {

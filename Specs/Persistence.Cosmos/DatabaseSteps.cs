@@ -1,9 +1,9 @@
 using System;
-using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
-using Fdb.Rx.Test;
+using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
+using Sensemaking.Test;
 using Microsoft.Azure.Cosmos;
 using Sensemaking.Bdd;
-using Database = Fdb.Rx.Persistence.Cosmos.Database;
+using Database = Sensemaking.Persistence.Cosmos.Database;
 
 namespace Sensemaking.Specs.Persistence.Cosmos;
 

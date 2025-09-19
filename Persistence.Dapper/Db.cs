@@ -7,11 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using FastMember;
-using Fdb.Rx.Persistence.Security;
+using Sensemaking.Persistence.Security;
 using Sensemaking.Resilience;
 using NodaTime;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     public interface IDb : IQueryDb
     {
@@ -42,7 +42,7 @@ namespace Fdb.Rx.Persistence.Dapper
         public async Task ExecuteAsync(string sql, object? param = null, CommandType commandType = CommandType.StoredProcedure, int? commandTimeout = null)
         {
             await using var connection = CreateConnection(ConnectionString);
-                await connection.ExecuteAsync(sql, param, commandType: commandType, commandTimeout: commandTimeout).ConfigureAwait(false);
+            await connection.ExecuteAsync(sql, param, commandType: commandType, commandTimeout: commandTimeout).ConfigureAwait(false);
         }
 
         public long Copy<T>(string tableName, IEnumerable<T> data, int batchSize = 5000, int bulkCopyTimeoutInMinutes = 10, SqlBulkCopyOptions sqlBulkCopyOptions = DefaultOptions)
@@ -113,7 +113,7 @@ namespace Fdb.Rx.Persistence.Dapper
                 BatchSize = batchSize,
                 EnableStreaming = true,
                 DestinationTableName = tableName,
-                BulkCopyTimeout = (int) Duration.FromMinutes(bulkCopyTimeoutInMinutes).ToTimeSpan().TotalSeconds,
+                BulkCopyTimeout = (int)Duration.FromMinutes(bulkCopyTimeoutInMinutes).ToTimeSpan().TotalSeconds,
             };
 
             tableName.GetColumns(this).ForEach(column => bulkCopy.ColumnMappings.Add(new SqlBulkCopyColumnMapping(column, column)));
@@ -126,13 +126,13 @@ namespace Fdb.Rx.Persistence.Dapper
         public static string[] GetColumns(this string tableName, IDb db)
         {
             var (name, schema) = GetNameAndSchema(tableName);
-            return db.Query<string>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @name and TABLE_SCHEMA = @schema", new {name, schema}).ToArray();
+            return db.Query<string>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @name and TABLE_SCHEMA = @schema", new { name, schema }).ToArray();
         }
 
         public static Task<IReadOnlyList<string>> GetColumnsAsync(this string tableName, IDb db)
         {
             var (name, schema) = GetNameAndSchema(tableName);
-            return db.QueryAsync<string>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @name and TABLE_SCHEMA = @schema", new {name, schema});
+            return db.QueryAsync<string>("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = @name and TABLE_SCHEMA = @schema", new { name, schema });
         }
 
         private static (string name, string schema) GetNameAndSchema(string tableName)

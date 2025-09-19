@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain.Events;
 using Newtonsoft.Json;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
-    
+
     public interface IAggregate
     {
         string Id { get; }
@@ -19,7 +19,7 @@ namespace Fdb.Rx.Domain
             Id = default!;
             Events = new Queue<DomainEvent>();
         }
-        
+
         protected Aggregate(T id)
         {
             Id = id;

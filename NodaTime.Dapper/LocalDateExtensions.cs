@@ -1,7 +1,7 @@
 using System.Globalization;
 using NodaTime;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     public static class LocalDateExtensions
     {

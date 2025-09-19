@@ -1,4 +1,4 @@
-﻿using Fdb.Rx.Persistence.Cosmos;
+﻿using Sensemaking.Persistence.Cosmos;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.Persistence.Cosmos;

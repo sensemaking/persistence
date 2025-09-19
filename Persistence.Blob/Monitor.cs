@@ -1,6 +1,6 @@
 ﻿using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Persistence.Blob
+namespace Sensemaking.Persistence.Blob
 {
     public class Monitor : InstanceMonitor
     {

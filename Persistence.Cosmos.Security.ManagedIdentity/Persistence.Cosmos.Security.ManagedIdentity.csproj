@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Cosmos.Security.ManagedIdentity</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Cosmos.Security.ManagedIdentity</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Cosmos.Security.ManagedIdentity</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Cosmos.Security.ManagedIdentity</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

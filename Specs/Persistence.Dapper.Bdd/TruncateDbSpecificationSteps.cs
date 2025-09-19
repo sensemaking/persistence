@@ -2,7 +2,7 @@
 using System.Data;
 using System.Linq;
 using Dapper;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Microsoft.Data.SqlClient;
 using Sensemaking.Bdd;
 

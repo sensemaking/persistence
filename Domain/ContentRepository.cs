@@ -2,12 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Serialization;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
 using Sensemaking.Monitoring;
 using Newtonsoft.Json.Linq;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public interface IRepositories
     {
@@ -16,7 +16,7 @@ namespace Fdb.Rx.Domain
         IMonitor Monitor { get; }
     }
 
-    public interface IContentRepository 
+    public interface IContentRepository
     {
         Task Save<T>(T content, User user) where T : IAmContent;
         Task MakeReadyForQc<T>(T content, User user) where T : IAmContent;
@@ -47,9 +47,9 @@ namespace Fdb.Rx.Domain
         public async Task Save<T>(T content, User user) where T : IAmContent
         {
             var savedContent = await SavedContent(content);
-            if(savedContent.IsTheSame)
+            if (savedContent.IsTheSame)
                 return;
-            
+
             (content as IRespondToTransitions)!.EditedBy(user);
 
             content.Events.Enqueue(new Changed<T>(content));
@@ -91,7 +91,7 @@ namespace Fdb.Rx.Domain
         public async Task Retire<T>(T content, User user) where T : IAmContent
         {
             (content as IRespondToTransitions)!.Retire(content, user);
-            
+
             await Save(content, async () =>
             {
                 var live = await GetLive<T>(content.Id);
@@ -103,7 +103,7 @@ namespace Fdb.Rx.Domain
         public async Task Reactivate<T>(T content, User user) where T : IAmContent
         {
             (content as IRespondToTransitions)!.Reactivate(user);
-            
+
             await Save(content, async () => await Persist(content, new Reactivated<T>(content)));
         }
 
@@ -118,7 +118,7 @@ namespace Fdb.Rx.Domain
         public virtual async Task Delete<T>(string id, User user) where T : IAmContent
         {
             var aggregate = await persistence.Get<T>(id).ConfigureAwait(false);
-            if(aggregate != null)
+            if (aggregate != null)
                 await Delete(aggregate, user).ConfigureAwait(false);
         }
 
@@ -150,7 +150,7 @@ namespace Fdb.Rx.Domain
         private async Task<(bool Exists, bool IsTheSame)> SavedContent<T>(T content) where T : IAmContent
         {
             var existingAggregate = await persistence.Get<T>(content.Id);
-            if(existingAggregate == null!)
+            if (existingAggregate == null!)
                 return (false, false);
 
             return (true, existingAggregate.IsEqualTo(content));
@@ -158,7 +158,7 @@ namespace Fdb.Rx.Domain
 
         private async Task Save<T>(T content, Func<Task> saveAction) where T : IAmContent
         {
-            if((await SavedContent(content)).IsTheSame)
+            if ((await SavedContent(content)).IsTheSame)
                 return;
 
             await saveAction();
@@ -183,7 +183,7 @@ namespace Fdb.Rx.Domain
 
         private async Task RemoveFromLive<T>(T live) where T : IAmContent
         {
-            if(live != null!)
+            if (live != null!)
                 await persistence.RemoveFromLive(live).ConfigureAwait(false);
         }
     }

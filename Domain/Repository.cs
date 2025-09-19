@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Serialization;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain.Events;
 using Newtonsoft.Json.Linq;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public interface IRepository
     {

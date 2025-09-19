@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Test.Cosmos
+namespace Sensemaking.Test.Cosmos
 {
     public static class CosmosEmulator
     {
@@ -18,7 +18,7 @@ namespace Fdb.Rx.Test.Cosmos
             if (!bool.Parse(Environment.GetEnvironmentVariable("SkipCheckEmulatorBeforeRun") ?? "false") && CheckRespondsToRequests(client)) return;
 
             StartEmulator(client, processStartInfo);
-            
+
             var emulatorHasInitialised = false;
             while (!emulatorHasInitialised)
                 emulatorHasInitialised = CheckRespondsToRequests(client);
@@ -28,11 +28,11 @@ namespace Fdb.Rx.Test.Cosmos
         {
             var ciIsManagingEmulator = bool.Parse(Environment.GetEnvironmentVariable("CiIsManagingEmulator") ?? "false");
             if (ciIsManagingEmulator) return;
-            
+
             var processes = Process.GetProcessesByName(ProcessName);
-            
+
             if (processes.Any()) { Stop(processes.Single(), client); }
-            
+
             processStartInfo ??= new ProcessStartInfo
             {
                 FileName = FileName,
@@ -41,7 +41,7 @@ namespace Fdb.Rx.Test.Cosmos
                 RedirectStandardOutput = true,
                 UseShellExecute = false
             };
-            
+
             Process.Start(processStartInfo);
         }
 

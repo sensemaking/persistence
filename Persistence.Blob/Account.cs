@@ -3,7 +3,7 @@ using System.Threading;
 using Azure.Identity;
 using Azure.Storage.Blobs;
 
-namespace Fdb.Rx.Persistence.Blob
+namespace Sensemaking.Persistence.Blob
 {
     public struct StorageSettings
     {
@@ -44,9 +44,9 @@ namespace Fdb.Rx.Persistence.Blob
         {
             if (!UsingManagedIdentity)
                 return new BlobServiceClient(StorageConnectionString);
-            
-            var defaultAzureCredential = UserAssignedClientId != null 
-                ? new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = UserAssignedClientId }) 
+
+            var defaultAzureCredential = UserAssignedClientId != null
+                ? new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = UserAssignedClientId })
                 : new DefaultAzureCredential();
             return new BlobServiceClient(ServiceUri, defaultAzureCredential);
         }

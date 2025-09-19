@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
-using Fdb.Rx.Messaging;
-using AuditedDomainRepository = Fdb.Rx.AuditedDomain.Repository;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
+using Sensemaking.Messaging;
+using AuditedDomainRepository = Sensemaking.AuditedDomain.Repository;
 
-namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain;
+namespace Sensemaking.Persistence.Cosmos.AuditedDomain;
 
 public class AuditedRepository : IContentRepository
 {
     private readonly AuditedDomainRepository repository;
-    
+
     internal AuditedRepository(IContentRepository repository, IPublishEvents auditPublisher)
     {
         this.repository = new AuditedDomainRepository(repository, auditPublisher);

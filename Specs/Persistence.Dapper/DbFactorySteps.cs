@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper;

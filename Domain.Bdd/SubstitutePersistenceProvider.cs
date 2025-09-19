@@ -1,6 +1,6 @@
-using Fdb.Rx.Test.Domain;
+using Sensemaking.Test.Domain;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public static class CosmosPersistenceProvider
     {
@@ -8,7 +8,7 @@ namespace Fdb.Rx.Domain
         {
             repositories.Persistence = new SubstitutePersistence();
             repositories.RepositoriesFactory = (persistence, dispatcher) => new Repositories(
-                new SubstituteContentRepository(persistence, dispatcher), 
+                new SubstituteContentRepository(persistence, dispatcher),
                 new SubstituteRepository(persistence, dispatcher), persistence.Monitor);
             return repositories;
         }

@@ -1,4 +1,4 @@
-﻿namespace Fdb.Rx.Domain.Events
+﻿namespace Sensemaking.Domain.Events
 {
     public abstract class DomainEvent
     {

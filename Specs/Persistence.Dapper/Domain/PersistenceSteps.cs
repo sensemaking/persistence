@@ -1,8 +1,8 @@
 using Microsoft.Data.SqlClient;
 using System.Transactions;
 using Dapper;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Domain;
+using Sensemaking.Persistence.Dapper;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.Persistence.Dapper.Domain;

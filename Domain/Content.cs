@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public interface IAmContent : IAggregate
     {
@@ -34,7 +34,7 @@ namespace Fdb.Rx.Domain
         public User? LastHumanEditor()
         {
             var nonSystemUsers = EditList.Where(u => !u.IsSystem).ToImmutableArray();
-            return !nonSystemUsers.Any() ? (User?) null : nonSystemUsers.Last();
+            return !nonSystemUsers.Any() ? (User?)null : nonSystemUsers.Last();
         }
 
         public User CreatedBy { get; private set; }

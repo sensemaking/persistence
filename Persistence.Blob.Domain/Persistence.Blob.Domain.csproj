@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Blob</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Blob.Domain</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Blob</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Blob.Domain</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

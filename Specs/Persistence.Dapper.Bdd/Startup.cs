@@ -1,6 +1,6 @@
 ﻿using System;
 using Dapper;
-using Fdb.Rx.Test.Dapper;
+using Sensemaking.Test.Dapper;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using NUnit.Framework;

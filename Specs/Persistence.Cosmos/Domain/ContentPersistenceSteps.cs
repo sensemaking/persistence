@@ -1,8 +1,8 @@
 using System.Collections.Generic;
-using Fdb.Rx.Persistence.Cosmos;
-using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
+using Sensemaking.Persistence.Cosmos;
+using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
 using NUnit.Framework;
-using Database = Fdb.Rx.Persistence.Cosmos.Database;
+using Database = Sensemaking.Persistence.Cosmos.Database;
 
 namespace Sensemaking.Specs.Persistence.Cosmos.Domain;
 

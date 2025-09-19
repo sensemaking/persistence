@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
 using NSubstitute;
 using Sensemaking.Bdd;
 

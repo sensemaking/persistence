@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
 using NSubstitute;
 using NSubstitute.ClearExtensions;
 
-namespace Fdb.Rx.Test.Domain
+namespace Sensemaking.Test.Domain
 {
     public class SubstituteRepository : IRepository
     {
@@ -71,17 +71,17 @@ namespace Fdb.Rx.Test.Domain
         public void ClearSubstitute()
         {
             SubstituteForReceivedCalls.ClearSubstitute();
-            ((SubstitutePersistence) persistence).ClearSubstitute();
+            ((SubstitutePersistence)persistence).ClearSubstitute();
         }
 
         public void OnSaving<T>(string id, Action<T> action) where T : IAggregate
         {
-            ((SubstitutePersistence) persistence).OnSaving(id, action);
+            ((SubstitutePersistence)persistence).OnSaving(id, action);
         }
 
         public void OnDeleting<T>(string id, Action<T> action) where T : IAggregate
         {
-            ((SubstitutePersistence) persistence).OnDeleting(id, action);
+            ((SubstitutePersistence)persistence).OnDeleting(id, action);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace Fdb.Rx.Domain.Events
+namespace Sensemaking.Domain.Events
 {
     public class Changed<T> : DomainEvent where T : IAggregate
     {
@@ -11,7 +11,7 @@ namespace Fdb.Rx.Domain.Events
 
         public T WasChanged { get; }
     }
-    
+
     public class MadeReadyForQc<T> : DomainEvent where T : IAggregate
     {
         public MadeReadyForQc(T wasChanged)
@@ -32,7 +32,7 @@ namespace Fdb.Rx.Domain.Events
         }
 
         public T WasQcd { get; }
-        
+
         [MaybeNull]
         public T PreviouslyLive { get; set; }
     }

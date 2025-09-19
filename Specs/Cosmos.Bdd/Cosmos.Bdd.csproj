@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFrameworks>net9.0</TargetFrameworks>
-        <AssemblyName>Fdb.Rx.Cosmos.Bdd</AssemblyName>
-        <RootNamespace>Fdb.Rx.Cosmos.Bdd</RootNamespace>
+        <AssemblyName>Sensemaking.Cosmos.Bdd</AssemblyName>
+        <RootNamespace>Sensemaking.Cosmos.Bdd</RootNamespace>
         <Version>1.0.0</Version>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>

@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     using System;
 

@@ -4,7 +4,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Sensemaking.Specs.Persistence.Dapper.Monitoring;
 using NSubstitute;
 using NSubstitute.ClearExtensions;

@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     internal class CosmosPersistence : IPersist
     {
@@ -34,7 +34,7 @@ namespace Fdb.Rx.Persistence.Cosmos
         }
 
         public async Task Remove<T>(T aggregate) where T : IAggregate
-{
+        {
             var client = Database.GetClient();
             await client.Delete<T>(Database.DatabaseName, registration.Get<T>().Collection(), aggregate.Id);
             await client.Delete<T>(Database.DatabaseName, registration.Get<T>().Collection(LiveCollectionSuffix), aggregate.Id);

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain
+namespace Sensemaking.Persistence.Cosmos.AuditedDomain
 {
     internal static class DomainExtensions
     {
@@ -35,10 +35,10 @@ namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain
                 return default!;
             }
         }
-        
+
         internal static T[] GetAll<T>(this CosmosClient client, string databaseName, string collectionName) where T : IAggregate
         {
-            var  results = new List<T>();
+            var results = new List<T>();
             using (var iterator = client.GetDatabase(databaseName).GetContainer(collectionName).GetItemQueryIterator<T>())
             {
                 while (iterator.HasMoreResults)
@@ -47,10 +47,10 @@ namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain
 
             return results.ToArray();
         }
-        
+
         internal static async Task<IReadOnlyCollection<T>> GetAllAsync<T>(this CosmosClient client, string databaseName, string collectionName) where T : IAggregate
         {
-            var  results = new List<T>();
+            var results = new List<T>();
             using (var iterator = client.GetDatabase(databaseName).GetContainer(collectionName).GetItemQueryIterator<T>())
             {
                 while (iterator.HasMoreResults)
@@ -67,7 +67,7 @@ namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain
         {
             client.GetDatabase(databaseName).GetContainer(collectionName).UpsertItemAsync(aggregate).GetAwaiter().GetResult();
         }
-        
+
         internal static Task SaveAsync<T>(this CosmosClient client, string databaseName, string collectionName, T aggregate) where T : IAggregate
         {
             return client.GetDatabase(databaseName).GetContainer(collectionName).UpsertItemAsync(aggregate);
@@ -86,7 +86,7 @@ namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain
                     throw;
             }
         }
-        
+
         internal static async Task DeleteAsync<T>(this CosmosClient client, string databaseName, string collectionName, string itemId) where T : IAggregate
         {
             try

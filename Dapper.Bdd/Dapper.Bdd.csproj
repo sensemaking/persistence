@@ -2,12 +2,12 @@
 
     <PropertyGroup>
         <TargetFrameworks>net9.0</TargetFrameworks>
-        <RootNamespace>Fdb.Rx.Dapper.Bdd</RootNamespace>
-        <AssemblyName>Fdb.Rx.Dapper.Bdd</AssemblyName>
+        <RootNamespace>Sensemaking.Dapper.Bdd</RootNamespace>
+        <AssemblyName>Sensemaking.Dapper.Bdd</AssemblyName>
         <Version>1.0.0</Version>
         <LangVersion>default</LangVersion>
         <Nullable>enable</Nullable>
-        <PackageId>Fdb.Rx.Dapper.Bdd</PackageId>
+        <PackageId>Sensemaking.Dapper.Bdd</PackageId>
         <Authors>First Databank</Authors>
         <Description>Deployment package for Bdd &amp; Dapper testing framework</Description>
         <Copyright>Copyright © 2025</Copyright>

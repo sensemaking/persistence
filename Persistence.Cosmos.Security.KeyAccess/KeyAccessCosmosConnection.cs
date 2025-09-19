@@ -2,7 +2,7 @@
 using System;
 using System.Serialization;
 
-namespace Fdb.Rx.Persistence.Cosmos.Security.KeyAccess
+namespace Sensemaking.Persistence.Cosmos.Security.KeyAccess
 {
     public class KeyAccessCosmosConnection(string endpoint, string authorizationKey) : IConnectToCosmos
     {

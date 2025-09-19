@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Test;
+using Sensemaking.Domain;
+using Sensemaking.Test;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence;

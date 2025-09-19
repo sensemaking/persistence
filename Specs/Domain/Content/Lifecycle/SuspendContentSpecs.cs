@@ -1,5 +1,5 @@
 ﻿using System;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.Domain.Lifecycle;

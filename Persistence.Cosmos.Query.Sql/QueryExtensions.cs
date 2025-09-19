@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos.Query.Sql;
+namespace Sensemaking.Persistence.Cosmos.Query.Sql;
 
 internal static class QueryExtensions
 {

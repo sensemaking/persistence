@@ -1,8 +1,8 @@
-using Fdb.Rx.AuditedDomain;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Messaging;
+using Sensemaking.AuditedDomain;
+using Sensemaking.Domain;
+using Sensemaking.Messaging;
 
-namespace Fdb.Rx.Persistence.Cosmos.AuditedDomain;
+namespace Sensemaking.Persistence.Cosmos.AuditedDomain;
 
 public static class Repositories
 {

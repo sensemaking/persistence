@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.NodaTime.Dapper</RootNamespace>
-    <AssemblyName>Fdb.Rx.NodaTime.Dapper</AssemblyName>
+    <RootNamespace>Sensemaking.NodaTime.Dapper</RootNamespace>
+    <AssemblyName>Sensemaking.NodaTime.Dapper</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

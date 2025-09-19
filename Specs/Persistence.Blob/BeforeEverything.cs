@@ -3,7 +3,7 @@
 
 using System;
 using System.Collections.Generic;
-using Fdb.Rx.Persistence.Blob;
+using Sensemaking.Persistence.Blob;
 using Sensemaking.Specs.Persistence.Blob;
 using NUnit.Framework;
 

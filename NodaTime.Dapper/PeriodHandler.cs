@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using NodaTime;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     public class PeriodHandler : SqlMapper.TypeHandler<Period>
     {

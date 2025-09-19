@@ -1,6 +1,6 @@
 ﻿using System;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Test.Domain;
+using Sensemaking.Domain;
+using Sensemaking.Test.Domain;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Domain;

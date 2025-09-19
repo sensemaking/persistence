@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Cosmos</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Cosmos.Query</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Cosmos</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Cosmos.Query</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

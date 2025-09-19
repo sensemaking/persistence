@@ -1,5 +1,5 @@
-﻿using Fdb.Rx.Domain;
-using Fdb.Rx.Test;
+﻿using Sensemaking.Domain;
+using Sensemaking.Test;
 using System;
 using System.Linq;
 using Sensemaking.Bdd;

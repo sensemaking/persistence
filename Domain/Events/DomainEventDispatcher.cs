@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Fdb.Rx.Domain.Events
+namespace Sensemaking.Domain.Events
 {
     public interface IDispatchDomainEvents
     {
         void Dispatch(Queue<DomainEvent> events);
         IRepositories Repositories { get; set; }
     }
-    
+
     public class DomainEventDispatcher(Func<IEnumerable<IHandleDomainEvents>> handlerFactory) : IDispatchDomainEvents
     {
         private IEnumerable<IHandleDomainEvents>? handlers;
@@ -18,7 +18,7 @@ namespace Fdb.Rx.Domain.Events
 
         public void Dispatch(Queue<DomainEvent> events)
         {
-            while(events.Count > 0)
+            while (events.Count > 0)
                 Dispatch(events.Dequeue());
         }
 

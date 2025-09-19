@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     internal class AggregateRegistration
     {

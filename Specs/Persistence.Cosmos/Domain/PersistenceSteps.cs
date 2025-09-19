@@ -1,6 +1,6 @@
-using Fdb.Rx.Domain;
-using Fdb.Rx.Persistence.Cosmos;
-using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
+using Sensemaking.Domain;
+using Sensemaking.Persistence.Cosmos;
+using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.Persistence.Cosmos.Domain;

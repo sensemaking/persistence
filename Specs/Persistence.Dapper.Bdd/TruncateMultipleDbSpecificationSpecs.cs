@@ -1,4 +1,4 @@
-﻿using Fdb.Rx.Test.Dapper;
+﻿using Sensemaking.Test.Dapper;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.PersistenceTest.Dapper;

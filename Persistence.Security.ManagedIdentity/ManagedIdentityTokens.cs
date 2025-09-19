@@ -1,7 +1,7 @@
 ﻿using Azure.Core;
 using Azure.Identity;
 
-namespace Fdb.Rx.Persistence.Security
+namespace Sensemaking.Persistence.Security
 {
     public class ManagedIdentityTokens : IProvideAccessTokens
     {

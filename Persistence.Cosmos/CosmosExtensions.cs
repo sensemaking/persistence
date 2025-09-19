@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     public static class CosmosExtensions
     {
@@ -8,8 +8,8 @@ namespace Fdb.Rx.Persistence.Cosmos
         {
             var _ = client.CreateDatabaseIfNotExistsAsync(databaseName).Result;
             return client.GetDatabase(databaseName);
-        }        
-        
+        }
+
         public static DatabaseResponse EnsureDeleteDatabase(this CosmosClient client, string databaseName)
         {
             return client.GetDatabase(databaseName).DeleteAsync().Result;

@@ -1,6 +1,6 @@
 using System;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Persistence.Blob;
+using Sensemaking.Domain;
+using Sensemaking.Persistence.Blob;
 using NUnit.Framework;
 
 namespace Sensemaking.Specs.Persistence.Blob.Domain;

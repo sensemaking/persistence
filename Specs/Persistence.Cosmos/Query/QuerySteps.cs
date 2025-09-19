@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Persistence.Cosmos;
-using Fdb.Rx.Persistence.Cosmos.Query.Sql;
-using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
-using Fdb.Rx.Test;
+using Sensemaking.Domain;
+using Sensemaking.Persistence.Cosmos;
+using Sensemaking.Persistence.Cosmos.Query.Sql;
+using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
+using Sensemaking.Test;
 using Microsoft.Azure.Cosmos;
 using Sensemaking.Bdd;
-using Database = Fdb.Rx.Persistence.Cosmos.Database;
-using User = Fdb.Rx.Domain.User;
+using Database = Sensemaking.Persistence.Cosmos.Database;
+using User = Sensemaking.Domain.User;
 
 namespace Sensemaking.Specs.Persistence.Cosmos.Query;
 

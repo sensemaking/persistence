@@ -3,7 +3,7 @@ using System.Text;
 using Microsoft.Azure.Cosmos;
 using Newtonsoft.Json;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     public class CosmosJsonNetSerializer : CosmosSerializer
     {
@@ -26,7 +26,7 @@ namespace Fdb.Rx.Persistence.Cosmos
             {
                 if (typeof(Stream).IsAssignableFrom(typeof(T)))
                 {
-                    return (T) (object) (stream);
+                    return (T)(object)(stream);
                 }
 
                 using (StreamReader sr = new StreamReader(stream))

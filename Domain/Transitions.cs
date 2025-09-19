@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     [Flags]
     public enum Transitions

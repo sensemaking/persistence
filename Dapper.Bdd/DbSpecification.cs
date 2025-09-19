@@ -2,7 +2,7 @@
 using System.Transactions;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Test.Dapper;
+namespace Sensemaking.Test.Dapper;
 
 public abstract class DbSpecification : Specification
 {

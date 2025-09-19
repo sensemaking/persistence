@@ -1,4 +1,4 @@
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     public class QuerySpecification
     {

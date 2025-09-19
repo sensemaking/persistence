@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Security</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Security</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Security</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Security</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

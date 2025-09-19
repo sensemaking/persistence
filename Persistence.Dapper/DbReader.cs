@@ -6,11 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using Sensemaking.Monitoring;
-using Fdb.Rx.NodaTime.Dapper;
-using Fdb.Rx.Persistence.Security;
+using Sensemaking.NodaTime.Dapper;
+using Sensemaking.Persistence.Security;
 using Sensemaking.Resilience;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     public interface IQueryDb : ICanBeMonitored
     {

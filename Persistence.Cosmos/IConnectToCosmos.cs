@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     public interface IConnectToCosmos
     {

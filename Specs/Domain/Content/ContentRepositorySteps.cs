@@ -2,9 +2,9 @@
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
+using Sensemaking.Persistence.Dapper;
 using NSubstitute;
 using NUnit.Framework;
 using Sensemaking.Bdd;

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     internal static class DomainExtensions
     {

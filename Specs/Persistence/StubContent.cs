@@ -1,5 +1,5 @@
 using System;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 
 namespace Sensemaking.Specs.Persistence;
 

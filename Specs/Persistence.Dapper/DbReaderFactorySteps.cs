@@ -1,5 +1,5 @@
 ﻿using System;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper;

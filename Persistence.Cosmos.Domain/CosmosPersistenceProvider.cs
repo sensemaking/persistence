@@ -1,6 +1,6 @@
-using Fdb.Rx.Persistence.Cosmos;
+using Sensemaking.Persistence.Cosmos;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public static class CosmosPersistenceProvider
     {

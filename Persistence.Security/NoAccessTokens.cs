@@ -1,4 +1,4 @@
-﻿namespace Fdb.Rx.Persistence.Security
+﻿namespace Sensemaking.Persistence.Security
 {
     public class NoAccessTokens : IProvideAccessTokens
     {

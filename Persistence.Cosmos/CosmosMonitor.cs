@@ -2,7 +2,7 @@
 using Sensemaking.Monitoring;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos
+namespace Sensemaking.Persistence.Cosmos
 {
     public class CosmosMonitor(IConnectToCosmos connection, string databaseName) : InstanceMonitor(new MonitorInfo("Cosmos Monitor", databaseName))
     {

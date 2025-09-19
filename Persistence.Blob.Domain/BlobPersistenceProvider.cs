@@ -1,6 +1,6 @@
-using Fdb.Rx.Persistence.Blob;
+using Sensemaking.Persistence.Blob;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public static class BlobPersistenceProvider
     {

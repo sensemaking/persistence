@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Linq;
 using System.Threading;
 using Sensemaking.Monitoring;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper.Monitoring;

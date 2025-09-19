@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Domain.Bdd</RootNamespace>
-    <AssemblyName>Fdb.Rx.Domain.Bdd</AssemblyName>
+    <RootNamespace>Sensemaking.Domain.Bdd</RootNamespace>
+    <AssemblyName>Sensemaking.Domain.Bdd</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageId>Fdb.Rx.Dommain.Bdd</PackageId>
+    <PackageId>Sensemaking.Dommain.Bdd</PackageId>
     <Authors>First Databank</Authors>
     <Description>Deployment package for Bdd domain testing framework</Description>
     <Copyright>Copyright © 2025</Copyright>

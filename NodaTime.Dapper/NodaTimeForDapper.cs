@@ -1,6 +1,6 @@
 ﻿using Dapper;
 
-namespace Fdb.Rx.NodaTime.Dapper
+namespace Sensemaking.NodaTime.Dapper
 {
     public static class NodaTimeForDapper
     {

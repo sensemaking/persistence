@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Cosmos.Security.KeyAccess</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Cosmos.Security.KeyAccess</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Cosmos.Security.KeyAccess</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Cosmos.Security.KeyAccess</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

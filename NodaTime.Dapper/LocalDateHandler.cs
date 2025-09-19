@@ -4,7 +4,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using NodaTime;
 
-namespace Fdb.Rx.NodaTime.Dapper
+namespace Sensemaking.NodaTime.Dapper
 {
     public class LocalDateHandler : SqlMapper.TypeHandler<LocalDate>
     {

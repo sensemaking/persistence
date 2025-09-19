@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     internal interface IPersist : IPersistContent
     {
@@ -14,7 +14,7 @@ namespace Fdb.Rx.Domain
         Task Remove<T>(T aggregate) where T : IAggregate;
         AggregateRegistration GetTypeRegistration();
     }
-    
+
     internal interface IPersistContent
     {
         Task<T> GetLive<T>(string id) where T : IAmContent;

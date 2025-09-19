@@ -2,11 +2,11 @@
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Sensemaking.Monitoring;
 using System.Serialization;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     internal class DapperPersistence : IPersist
     {
@@ -16,7 +16,7 @@ namespace Fdb.Rx.Persistence.Dapper
         protected IDb db;
 
         private const string PublicationTableSuffix = "AsPublished";
-        
+
         public DapperPersistence(IDb db)
         {
             this.db = db;

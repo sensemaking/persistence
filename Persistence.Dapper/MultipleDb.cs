@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Persistence.Dapper
+namespace Sensemaking.Persistence.Dapper
 {
     public class MultipleDb : IDb
     {

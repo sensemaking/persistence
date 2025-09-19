@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Fdb.Rx.Persistence.Cosmos.Domain")]
-[assembly: InternalsVisibleTo("Fdb.Rx.Persistence.Cosmos.Query")]
+[assembly: InternalsVisibleTo("Sensemaking.Persistence.Cosmos.Domain")]
+[assembly: InternalsVisibleTo("Sensemaking.Persistence.Cosmos.Query")]
 [assembly: InternalsVisibleTo("Sensemaking.Specs.Persistence.Cosmos")]

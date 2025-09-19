@@ -1,6 +1,6 @@
 ﻿using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Test.Domain
+namespace Sensemaking.Test.Domain
 {
     internal class Monitor : InstanceMonitor
     {

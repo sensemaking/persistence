@@ -1,6 +1,6 @@
 ﻿using System;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
 
 namespace Sensemaking.Specs.Domain;
 

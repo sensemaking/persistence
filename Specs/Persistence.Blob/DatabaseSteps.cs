@@ -1,7 +1,7 @@
 using System;
 using Azure.Storage.Blobs;
-using Fdb.Rx.Persistence.Blob;
-using Fdb.Rx.Test;
+using Sensemaking.Persistence.Blob;
+using Sensemaking.Test;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Blob;

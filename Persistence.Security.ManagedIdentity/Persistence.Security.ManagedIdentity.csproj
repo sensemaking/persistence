@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>net9.0</TargetFrameworks>
-    <RootNamespace>Fdb.Rx.Persistence.Security</RootNamespace>
-    <AssemblyName>Fdb.Rx.Persistence.Security.ManagedIdentity</AssemblyName>
+    <RootNamespace>Sensemaking.Persistence.Security</RootNamespace>
+    <AssemblyName>Sensemaking.Persistence.Security.ManagedIdentity</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>

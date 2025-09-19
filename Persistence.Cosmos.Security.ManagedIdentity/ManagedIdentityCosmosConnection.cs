@@ -3,7 +3,7 @@ using System.Serialization;
 using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 
-namespace Fdb.Rx.Persistence.Cosmos.Security.ManagedIdentity
+namespace Sensemaking.Persistence.Cosmos.Security.ManagedIdentity
 {
     public class ManagedIdentityCosmosConnection(string endpoint) : IConnectToCosmos
     {

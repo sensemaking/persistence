@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Azure;
 using Azure.Storage.Blobs;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using System.Serialization;
 using Newtonsoft.Json;
 using JsonSerializer = System.Serialization.JsonSerializer;
 
-namespace Fdb.Rx.Persistence.Blob
+namespace Sensemaking.Persistence.Blob
 {
     internal static class DomainExtensions
     {

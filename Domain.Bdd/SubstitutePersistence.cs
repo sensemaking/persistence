@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Sensemaking.Monitoring;
 using System.Serialization;
 
-namespace Fdb.Rx.Test.Domain
+namespace Sensemaking.Test.Domain
 {
     internal class SubstitutePersistence : IPersist
     {
@@ -35,19 +35,19 @@ namespace Fdb.Rx.Test.Domain
         public Task Persist<T>(T aggregate) where T : IAggregate
         {
             database.Persist(aggregate);
-            
+
             if (actions.ContainsKey(aggregate.Id.GetSavingKey<T>()))
                 actions[aggregate.Id.GetSavingKey<T>()](aggregate);
-            
+
             return Task.CompletedTask;
         }
 
         public Task Remove<T>(T aggregate) where T : IAggregate
         {
             database.Remove(aggregate.Id.GetKey<T>());
-            
+
             if (actions.ContainsKey(aggregate.Id.GetDeletingKey<T>())) actions[aggregate.Id.GetDeletingKey<T>()](aggregate);
-            
+
             return Task.CompletedTask;
         }
 
@@ -63,7 +63,7 @@ namespace Fdb.Rx.Test.Domain
 
         public Task<IReadOnlyCollection<T>> GetAllLive<T>() where T : IAmContent
         {
-            return Task.FromResult((IReadOnlyCollection<T>) liveDatabase.GetAllOfType<T>().Where(x => x.IsLive));
+            return Task.FromResult((IReadOnlyCollection<T>)liveDatabase.GetAllOfType<T>().Where(x => x.IsLive));
         }
 
         public Task PersistAsLive<T>(T aggregate) where T : IAmContent
@@ -89,7 +89,7 @@ namespace Fdb.Rx.Test.Domain
         {
             actions.Persist(id, ActionType.Save, onSave);
         }
-        
+
         internal void OnDeleting<T>(string id, Action<T> onDelete) where T : IAggregate
         {
             actions.Persist(id, ActionType.Delete, onDelete);
@@ -113,7 +113,7 @@ namespace Fdb.Rx.Test.Domain
             else
                 database.Add(aggregate.Id.GetKey<T>(), aggregate.Serialize());
         }
-        
+
         internal static void Persist<T>(this IDictionary<(SubstitutePersistence.ActionType, Type, string), Action<object>> actions, string id, SubstitutePersistence.ActionType type, Action<T> action) where T : IAggregate
         {
             if (actions.ContainsKey(id.GetKey<T>(type)))

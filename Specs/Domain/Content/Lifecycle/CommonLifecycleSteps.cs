@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using System.Data;
-using Fdb.Rx.Domain;
-using Fdb.Rx.Domain.Events;
-using Fdb.Rx.Persistence.Dapper;
-using Fdb.Rx.Test;
+using Sensemaking.Domain;
+using Sensemaking.Domain.Events;
+using Sensemaking.Persistence.Dapper;
+using Sensemaking.Test;
 using NSubstitute;
 using Sensemaking.Bdd;
 

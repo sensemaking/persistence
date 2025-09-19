@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Fdb.Rx.Domain;
+using Sensemaking.Domain;
 using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Persistence.Blob
+namespace Sensemaking.Persistence.Blob
 {
     internal class BlobPersistence : IPersist
     {
@@ -18,11 +18,11 @@ namespace Fdb.Rx.Persistence.Blob
 
         public Task<T[]> Get<T>(params string[] ids) where T : IAggregate
         {
-           return Task.FromResult(ids.Aggregate(new List<T>(), (list, id) =>
-           {
+            return Task.FromResult(ids.Aggregate(new List<T>(), (list, id) =>
+            {
                 list.Add(Account.GetClient().Get<T>(registration.Get<T>().Collection(), id).Result);
                 return list;
-           }).ToArray());
+            }).ToArray());
         }
 
         public Task Persist<T>(T aggregate) where T : IAggregate

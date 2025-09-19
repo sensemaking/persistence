@@ -1,7 +1,7 @@
-﻿using Fdb.Rx.Domain;
-using Fdb.Rx.Persistence.Dapper;
+﻿using Sensemaking.Domain;
+using Sensemaking.Persistence.Dapper;
 
-namespace  Fdb.Rx.Domain
+namespace Sensemaking.Domain
 {
     public static class DapperPersistenceProvider
     {

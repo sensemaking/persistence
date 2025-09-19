@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Linq;
-using Fdb.Rx.Persistence.Dapper;
+using Sensemaking.Persistence.Dapper;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Test.Dapper
+namespace Sensemaking.Test.Dapper
 {
     public abstract class TruncateDbSpecification : Specification
     {
@@ -29,7 +29,7 @@ namespace Fdb.Rx.Test.Dapper
         {
             static_data_tables = tables;
         }
-        
+
         protected override void before_each()
         {
             base.before_each();
@@ -42,7 +42,7 @@ namespace Fdb.Rx.Test.Dapper
             base.after_each();
         }
 
-        private static string[] ExcludeFromTruncate(string[] excludedTables) => new [] { "dbo.SchemaVersions" }.Concat(excludedTables).ToArray();
+        private static string[] ExcludeFromTruncate(string[] excludedTables) => new[] { "dbo.SchemaVersions" }.Concat(excludedTables).ToArray();
 
         private void Truncate()
         {
@@ -62,7 +62,7 @@ namespace Fdb.Rx.Test.Dapper
                 .ForEach(tt => new Db(connectionString).Execute($"DELETE FROM {tt}", commandType: CommandType.Text));
         }
     }
-    
+
     internal static class ConnectionStringExtensions
     {
         internal static bool IsLocallyConnected(this string connectionString)
@@ -70,15 +70,15 @@ namespace Fdb.Rx.Test.Dapper
             var server = new SqlConnectionStringBuilder(connectionString).DataSource;
             return new[] { ".\\", ".", "(local)", "(localdb)\\mssqllocaldb", "(localdb)", "localhost", "127.0.0.1", Environment.MachineName }.Any(localServerName => localServerName.Equals(server, StringComparison.OrdinalIgnoreCase));
         }
-        
-        internal static IEnumerable<string> FilterExcluded(this IEnumerable<string> allTables, string[] excludeFromTruncate) => 
+
+        internal static IEnumerable<string> FilterExcluded(this IEnumerable<string> allTables, string[] excludeFromTruncate) =>
             allTables.Where(t => excludeFromTruncate.None(exclusion => exclusion.SchemaTableEquals(t)));
-        internal static bool SchemaTableEquals(this string schemaTable,  string otherSchemaTable) => 
-            string.Equals(schemaTable.NormalizeSchema(),otherSchemaTable.NormalizeSchema(),StringComparison.OrdinalIgnoreCase);
-        internal static string NormalizeSchema(this string schemaTable) => 
+        internal static bool SchemaTableEquals(this string schemaTable, string otherSchemaTable) =>
+            string.Equals(schemaTable.NormalizeSchema(), otherSchemaTable.NormalizeSchema(), StringComparison.OrdinalIgnoreCase);
+        internal static string NormalizeSchema(this string schemaTable) =>
             schemaTable.Replace("[", "").Replace("]", "");
     }
-    
- 
-    
+
+
+
 }

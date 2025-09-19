@@ -4,8 +4,8 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using Fdb.Rx.Persistence.Dapper;
-using Fdb.Rx.Test;
+using Sensemaking.Persistence.Dapper;
+using Sensemaking.Test;
 using NodaTime;
 using Sensemaking.Bdd;
 
