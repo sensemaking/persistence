@@ -6,15 +6,10 @@
         <AssemblyName>Fdb.Rx.Testing.Persistence</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>First Databank</Authors>
+        <OutputPath>bin\</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
         <Copyright>Copyright © 2025</Copyright>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-        <OutputPath>bin\</OutputPath>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-        <OutputPath>bin\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -26,15 +21,6 @@
     <ItemGroup>
       <ProjectReference Include="..\..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Domain\Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>Fdb.Rx.Testing.Persistence.Dapper</_Parameter1>
-        </AssemblyAttribute>
-        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-            <_Parameter1>Fdb.Rx.Testing.Persistence.Cosmos</_Parameter1>
-        </AssemblyAttribute>
     </ItemGroup>
 
 </Project>

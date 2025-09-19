@@ -11,6 +11,9 @@
     <Authors>First Databank</Authors>
     <Description>NodaTime mappers for Dapper</Description>
     <Copyright>Copyright © 2023</Copyright>
+    <OutputPath>bin\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
