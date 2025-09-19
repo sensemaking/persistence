@@ -11,7 +11,7 @@ using Sensemaking.Bdd;
 using Database = Fdb.Rx.Persistence.Cosmos.Database;
 using User = Fdb.Rx.Domain.User;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos.Query;
+namespace Sensemaking.Specs.Persistence.Cosmos.Query;
 
 public abstract partial class QuerySpecs
 {
@@ -19,7 +19,7 @@ public abstract partial class QuerySpecs
     private IReadOnlyCollection<StubContent> expected_aggregates;
     private IEnumerable<StubContent> the_result;
     private QuerySpecification spec;
-        
+
     private const string container = "QueryTest";
 
     private IContentRepository the_repository;
@@ -34,7 +34,7 @@ public abstract partial class QuerySpecs
             .For.Cosmos(new KeyAccessCosmosConnection(Settings.CosmosDb.Endpoint, Settings.CosmosDb.AccessKey), Settings.CosmosDb.Database)
             .Register<StubContent>(container, null)
             .Get().Content;
-        
+
         spec = new QuerySpecification(container, "select * from QueryTest WHERE QueryTest.id in (\"1\",\"3\")");
     }
 

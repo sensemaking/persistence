@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using Fdb.Rx.Persistence.Blob;
-using Fdb.Rx.Testing.Persistence.Blob;
+using Sensemaking.Specs.Persistence.Blob;
 using NUnit.Framework;
 
 // This class is without namespace on purpose, to make sure it runs once per test assembly regardless of how tests are packaged.
@@ -19,7 +19,7 @@ public class BeforeEverything
     {
         var runAzurite = bool.Parse(Environment.GetEnvironmentVariable("RunAzurite") ?? "true");
         if (!runAzurite) return;
-        
+
         Instance = InitializeAzuriteWithRetry(2);
     }
 

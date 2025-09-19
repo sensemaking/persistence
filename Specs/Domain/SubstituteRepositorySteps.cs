@@ -3,7 +3,7 @@ using Fdb.Rx.Domain;
 using Fdb.Rx.Test.Domain;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 public partial class SubstituteRepositoriesSpecs
 {
@@ -36,7 +36,7 @@ public partial class SubstituteRepositoriesSpecs
         saved_content = default;
         deleted_aggregate = default;
         deleted_content = default;
-        
+
         the_repository.ClearSubstitute();
         the_repository.ClearReceivedCalls();
         the_content_repository.ClearSubstitute();
@@ -80,7 +80,7 @@ public partial class SubstituteRepositoriesSpecs
         returned_stub_aggregates = the_repository.GetAll<StubContent>().Await();
         returned_stub_contents = the_content_repository.GetAll<StubContent>().Await();
     }
-    
+
     private Action a_save_is_mocked_for(StubContent aggregate)
     {
         return () =>
@@ -178,7 +178,7 @@ public partial class SubstituteRepositoriesSpecs
         {
             returned_stub_aggregates.Length.should_be(2);
             returned_stub_contents.Length.should_be(2);
-            
+
             returned_stub_aggregates.should_contain(aggregate);
             returned_stub_contents.should_contain(aggregate);
             returned_stub_aggregates.should_contain(anotherAggregate);
@@ -190,7 +190,7 @@ public partial class SubstituteRepositoriesSpecs
     {
         returned_stub_aggregates.Length.should_be(3);
         returned_stub_contents.Length.should_be(3);
-            
+
         returned_stub_aggregates.should_contain(stub_aggregate);
         returned_stub_contents.should_contain(stub_aggregate);
         returned_stub_aggregates.should_contain(another_stub_aggregate);

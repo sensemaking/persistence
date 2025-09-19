@@ -3,7 +3,7 @@ using System;
 using Dapper;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [SetUpFixture]
 public class Startup

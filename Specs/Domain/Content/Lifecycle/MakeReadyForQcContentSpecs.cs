@@ -3,7 +3,7 @@ using Fdb.Rx.Domain;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain.Lifecycle;
+namespace Sensemaking.Specs.Domain.Lifecycle;
 
 public class MakeReadyForQcContentSpecs : CommonLifecycleSteps
 {
@@ -30,7 +30,7 @@ public class MakeReadyForQcContentSpecs : CommonLifecycleSteps
         When(it_is_made_ready_for_qc_by(human_user));
         Then(() => informs<ValidationException>("Retired content cannot be made ready for qc."));
     }
-    
+
     [Test]
     public void system_user_cannot_make_content_ready_for_qc()
     {

@@ -3,7 +3,7 @@ using Fdb.Rx.Persistence.Cosmos;
 using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos.Domain;
+namespace Sensemaking.Specs.Persistence.Cosmos.Domain;
 
 [TestFixture]
 public class PersistenceSteps() : PersistenceSpecsTemplate(() => RepositoryBuilder.For

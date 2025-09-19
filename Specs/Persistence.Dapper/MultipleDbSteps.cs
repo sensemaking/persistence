@@ -5,12 +5,12 @@ using Microsoft.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Fdb.Rx.Persistence.Dapper;
-using Fdb.Rx.Testing.Persistence.Dapper.Monitoring;
+using Sensemaking.Specs.Persistence.Dapper.Monitoring;
 using NSubstitute;
 using NSubstitute.ClearExtensions;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper;
+namespace Sensemaking.Specs.Persistence.Dapper;
 
 public partial class MultipleDbSpecs
 {

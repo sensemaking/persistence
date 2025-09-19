@@ -9,9 +9,9 @@ using Fdb.Rx.Test;
 using NodaTime;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper;
+namespace Sensemaking.Specs.Persistence.Dapper;
 
-public partial class DbSpecs 
+public partial class DbSpecs
 {
     private const string table_name = "[MyTable]";
     private const string temp_table_name = "MyTempTable";
@@ -73,7 +73,7 @@ public partial class DbSpecs
 
     private void executing()
     {
-        db.Execute($"INSERT INTO {table_name} SELECT @new_id", new {new_id}, CommandType.Text);
+        db.Execute($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text);
     }
 
     private void querying()
@@ -89,8 +89,8 @@ public partial class DbSpecs
     private void copying_in_bulk()
     {
         duration = db.Copy(table_name, copiedIds);
-    }  
-        
+    }
+
     private void copying_in_bulk_async()
     {
         duration = db.CopyAsync(table_name, copiedIds).Await();
@@ -101,7 +101,7 @@ public partial class DbSpecs
         var sql = $"SELECT Id FROM {table_name} WHERE Id = '{existing_id}'";
         var sqlConnection = new SqlConnection(Startup.Database.connection_string);
         sqlConnection.Open();
-        command = new SqlCommand(sql, sqlConnection) {CommandTimeout = 0};
+        command = new SqlCommand(sql, sqlConnection) { CommandTimeout = 0 };
         command.Prepare();
     }
 
@@ -117,18 +117,18 @@ public partial class DbSpecs
 
     private void querying_constructed_result()
     {
-        constructed_query_result = db.Query(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new {id = existing_id});
-    }  
-        
+        constructed_query_result = db.Query(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id });
+    }
+
     private void querying_constructed_result_async()
     {
-        constructed_query_result = db.QueryAsync(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new {id = existing_id}).Await();
+        constructed_query_result = db.QueryAsync(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id }).Await();
     }
-    
+
     private void it_is_carried_out()
     {
         using (var con = new SqlConnection(Startup.Database.connection_string))
-            con.Query<Guid>($"SELECT Id FROM {table_name} WHERE Id = @new_id", new {new_id}).should_not_be_empty();
+            con.Query<Guid>($"SELECT Id FROM {table_name} WHERE Id = @new_id", new { new_id }).should_not_be_empty();
     }
 
     private void results_are_returned()

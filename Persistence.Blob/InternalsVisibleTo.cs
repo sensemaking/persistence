@@ -1,4 +1,4 @@
 ﻿using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Fdb.Rx.Persistence.Blob.Domain")]
-[assembly: InternalsVisibleTo("Fdb.Rx.Testing.Persistence.Blob")]
+[assembly: InternalsVisibleTo("Sensemaking.Specs.Persistence.Blob")]

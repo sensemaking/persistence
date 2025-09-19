@@ -11,7 +11,7 @@ using Sensemaking.Bdd;
 using Sensemaking.Monitoring;
 using Serilog;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [TestFixture]
 public partial class RepositorySpecs
@@ -51,7 +51,7 @@ public partial class RepositorySpecs
 
         validator = new StubValidator<StubAggregate>();
         the_repositories = RepositoryBuilder.For.Dapper(db).Register(collection, validator)
-            .Handling(() => new IHandleDomainEvents[] {deleteHandler, changeHandler, eventHandler})
+            .Handling(() => new IHandleDomainEvents[] { deleteHandler, changeHandler, eventHandler })
             .Get();
     }
 
@@ -81,7 +81,7 @@ public partial class RepositorySpecs
         var eventHandler = new MetricRecordingChangedDomainEventHandler<StubAggregate>(domain_change_handle = Substitute.For<Action<StubAggregate>>());
         the_repositories = RepositoryBuilder.For.Dapper(db)
             .Register<StubAggregate>(collection, null)
-            .Handling(() => new IHandleDomainEvents[] {eventHandler})
+            .Handling(() => new IHandleDomainEvents[] { eventHandler })
             .Get();
     }
 

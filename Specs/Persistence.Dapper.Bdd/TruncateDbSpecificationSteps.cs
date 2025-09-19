@@ -6,7 +6,7 @@ using Fdb.Rx.Persistence.Dapper;
 using Microsoft.Data.SqlClient;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.PersistenceTest.Dapper;
+namespace Sensemaking.Specs.PersistenceTest.Dapper;
 
 public partial class TruncateDbSpecificationSpecs
 {
@@ -17,7 +17,7 @@ public partial class TruncateDbSpecificationSpecs
 
     private static readonly Guid new_id = Guid.NewGuid();
 
-    public TruncateDbSpecificationSpecs() : base(Startup.Database.connection_string, "[dbo].[SchemaVersions]", $"dbo.{table_name_to_skip}") {}
+    public TruncateDbSpecificationSpecs() : base(Startup.Database.connection_string, "[dbo].[SchemaVersions]", $"dbo.{table_name_to_skip}") { }
 
     protected override void before_all()
     {
@@ -43,7 +43,7 @@ public partial class TruncateDbSpecificationSpecs
                          INSERT INTO dbo.SchemaVersions SELECT @id
                          """, new { id = Guid.NewGuid() }, commandType: CommandType.Text);
         }
-            
+
         using (var con = new SqlConnection(Startup.Database.connection_string))
         {
             con.Execute($"""CREATE VIEW {referenced_table_view_name} WITH SCHEMABINDING AS SELECT Id FROM {referenced_table_name}""");
@@ -69,8 +69,8 @@ public partial class TruncateDbSpecificationSpecs
 
     private void inserting_test_data()
     {
-        new Db(Startup.Database.connection_string).Execute($"INSERT INTO {table_name} SELECT @new_id", new {new_id}, CommandType.Text);
-        new Db(Startup.Database.connection_string).Execute($"INSERT INTO {referenced_table_name} SELECT @new_id", new {new_id}, CommandType.Text);
+        new Db(Startup.Database.connection_string).Execute($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text);
+        new Db(Startup.Database.connection_string).Execute($"INSERT INTO {referenced_table_name} SELECT @new_id", new { new_id }, CommandType.Text);
     }
 
     private void cleaning_up_the_test() => after_each();

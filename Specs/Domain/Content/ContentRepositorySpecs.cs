@@ -3,7 +3,7 @@ using Fdb.Rx.Test;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [TestFixture]
 public partial class ContentRepositorySpecs : Specification
@@ -16,10 +16,10 @@ public partial class ContentRepositorySpecs : Specification
         And(a_thired_aggregate);
         When(saving_the_aggregates);
         Then(it_is_saved);
-        
+
         When(getting_the_aggregates);
         Then(the_aggregates_are_returned);
-        
+
         When(getting_all_aggregates);
         Then(all_aggregates_are_returned);
     }

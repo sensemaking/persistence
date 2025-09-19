@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-namespace Fdb.Rx.Testing.Persistence.Blob;
+namespace Sensemaking.Specs.Persistence.Blob;
 
 /// <summary>
 /// This class manages Azurite Lifecycle for a test class.
@@ -26,9 +26,9 @@ public class Azurite : IDisposable
     private const string AzuriteLocationKey = "AZURE_AZURITE_LOCATION";
     private string tempDirectory;
     private Process process;
-    private CountdownEvent countdownEvent = new (2);
-    private StringBuilder azuriteOutput = new ();
-    private StringBuilder azuriteError = new ();
+    private CountdownEvent countdownEvent = new(2);
+    private StringBuilder azuriteOutput = new();
+    private StringBuilder azuriteError = new();
     private int blobsPort;
     private int queuesPort;
 
@@ -102,7 +102,8 @@ public class Azurite : IDisposable
         try
         {
             process.Start();
-        } catch (Win32Exception e)
+        }
+        catch (Win32Exception e)
         {
             throw new ArgumentException(ErrorMessage("could not run NodeJS, make sure it's installed"), e);
         }

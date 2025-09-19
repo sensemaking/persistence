@@ -1,7 +1,7 @@
 ﻿using Fdb.Rx.Persistence.Cosmos;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos;
+namespace Sensemaking.Specs.Persistence.Cosmos;
 
 [SetUpFixture]
 public class TestTeardown

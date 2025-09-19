@@ -3,7 +3,7 @@ using Fdb.Rx.Domain;
 using Fdb.Rx.Persistence.Blob;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Blob.Domain;
+namespace Sensemaking.Specs.Persistence.Blob.Domain;
 
 [TestFixture]
 public partial class PersistenceSteps() : PersistenceSpecsTemplate(() => RepositoryBuilder.For.Blob()
@@ -11,7 +11,7 @@ public partial class PersistenceSteps() : PersistenceSpecsTemplate(() => Reposit
 {
     protected override void before_all()
     {
-        base.before_all();        
+        base.before_all();
         Account.Configure(Settings.Storage.EmulatorConnectionString);
     }
 }

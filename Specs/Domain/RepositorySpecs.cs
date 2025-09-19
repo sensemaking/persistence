@@ -3,7 +3,7 @@ using Fdb.Rx.Test;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [TestFixture]
 public partial class RepositorySpecs : Specification

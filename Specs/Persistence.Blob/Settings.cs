@@ -1,4 +1,4 @@
-﻿namespace Fdb.Rx.Testing.Persistence.Blob;
+﻿namespace Sensemaking.Specs.Persistence.Blob;
 
 public static class Settings
 {

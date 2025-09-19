@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence;
+namespace Sensemaking.Specs.Persistence;
 
-public abstract partial class ContentPersistenceSpecsTemplate: Specification
+public abstract partial class ContentPersistenceSpecsTemplate : Specification
 {
     [Test]
     public void persists_and_gets_content()
@@ -16,10 +16,10 @@ public abstract partial class ContentPersistenceSpecsTemplate: Specification
 
         When(getting_some_aggregates);
         Then(the_aggregates_are_returned);
-        
+
         When(getting_all_aggregates);
         Then(all_aggregates_are_returned);
-        
+
         When(getting_live_content);
         Then(the_content_is_not_retrieved);
 

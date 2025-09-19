@@ -1,7 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Domain.Lifecycle;
+namespace Sensemaking.Specs.Domain.Lifecycle;
 
 public class QcContentSpecs : CommonLifecycleSteps
 {

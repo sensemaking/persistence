@@ -4,7 +4,7 @@ using Fdb.Rx.Persistence.Blob;
 using Fdb.Rx.Test;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Blob;
+namespace Sensemaking.Specs.Persistence.Blob;
 
 public partial class DatabaseSpecs
 {

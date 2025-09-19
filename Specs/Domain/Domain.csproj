@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>Fdb.Rx.Testing.Domain</RootNamespace>
-    <AssemblyName>Fdb.Rx.Testing.Domain</AssemblyName>
+    <RootNamespace>Sensemaking.Specs.Domain</RootNamespace>
+    <AssemblyName>Sensemaking.Specs.Domain</AssemblyName>
     <Version>1.0.0</Version>
     <LangVersion>latest</LangVersion>
     <Authors>First Databank</Authors>

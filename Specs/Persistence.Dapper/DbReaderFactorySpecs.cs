@@ -3,7 +3,7 @@ using Fdb.Rx.Test;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper;
+namespace Sensemaking.Specs.Persistence.Dapper;
 
 [TestFixture]
 public partial class DbReaderFactorySpecs : Specification

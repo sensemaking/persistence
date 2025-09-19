@@ -2,7 +2,7 @@
 using Fdb.Rx.Domain;
 using Fdb.Rx.Domain.Events;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 public static class Authors
 {

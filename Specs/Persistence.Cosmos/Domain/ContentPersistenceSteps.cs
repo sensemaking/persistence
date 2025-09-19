@@ -4,7 +4,7 @@ using Fdb.Rx.Persistence.Cosmos.Security.KeyAccess;
 using NUnit.Framework;
 using Database = Fdb.Rx.Persistence.Cosmos.Database;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos.Domain;
+namespace Sensemaking.Specs.Persistence.Cosmos.Domain;
 
 [TestFixture]
 public class ContentPersistenceSteps() : ContentPersistenceSpecsTemplate(() => new CosmosPersistence())

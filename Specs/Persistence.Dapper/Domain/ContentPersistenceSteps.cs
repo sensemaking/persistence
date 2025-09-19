@@ -5,7 +5,7 @@ using Dapper;
 using Fdb.Rx.Persistence.Dapper;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper.Domain;
+namespace Sensemaking.Specs.Persistence.Dapper.Domain;
 
 [TestFixture]
 public abstract class ContentPersistenceSteps() : ContentPersistenceSpecsTemplate(() => new DapperPersistence(new Db(Startup.Database.connection_string)))

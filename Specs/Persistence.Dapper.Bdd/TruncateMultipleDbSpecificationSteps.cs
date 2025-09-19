@@ -6,7 +6,7 @@ using Fdb.Rx.Persistence.Dapper;
 using Microsoft.Data.SqlClient;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.PersistenceTest.Dapper;
+namespace Sensemaking.Specs.PersistenceTest.Dapper;
 
 public partial class TruncateMultipleDbSpecificationSpecs
 {

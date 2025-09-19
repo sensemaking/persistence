@@ -5,7 +5,7 @@ using Fdb.Rx.Domain;
 using Fdb.Rx.Persistence.Dapper;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper.Domain;
+namespace Sensemaking.Specs.Persistence.Dapper.Domain;
 
 [TestFixture]
 public class PersistenceSteps() : PersistenceSpecsTemplate(() => RepositoryBuilder.For.Dapper(new Db(Startup.Database.connection_string))

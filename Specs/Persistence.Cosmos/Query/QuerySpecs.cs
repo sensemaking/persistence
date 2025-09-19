@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos.Query;
+namespace Sensemaking.Specs.Persistence.Cosmos.Query;
 
 public abstract partial class QuerySpecs : Specification
 {

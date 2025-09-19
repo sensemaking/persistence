@@ -4,7 +4,7 @@ using System.Linq;
 using Fdb.Rx.Persistence.Dapper;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper;
+namespace Sensemaking.Specs.Persistence.Dapper;
 
 public partial class DbFactorySpecs
 {

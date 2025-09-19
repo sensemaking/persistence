@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>Fdb.Rx.Testing.Persistence.Dapper.Bdd</RootNamespace>
-    <AssemblyName>Fdb.Rx.Testing.Persistence.Dapper.Bdd</AssemblyName>
+    <RootNamespace>Sensemaking.Specs.Persistence.Dapper.Bdd</RootNamespace>
+    <AssemblyName>Sensemaking.Specs.Persistence.Dapper.Bdd</AssemblyName>
     <Version>1.0.0</Version>
     <Authors>First Databank</Authors>
     <Copyright>Copyright © 2025</Copyright>

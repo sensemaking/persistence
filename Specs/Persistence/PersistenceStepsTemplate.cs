@@ -4,20 +4,20 @@ using System;
 using System.Linq;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence;
+namespace Sensemaking.Specs.Persistence;
 
 public abstract partial class PersistenceSpecsTemplate(Func<IRepository> repositoryFactory)
 {
     protected const string container_name = "MyAggregateContainer";
     protected const string aggregate_content = "I am some of the most interesting content ever scribed.";
-    
+
     private IRepository the_repository;
     protected AnAggregate the_aggregate;
     protected AnAggregate other_aggregate;
     protected AnAggregate third_aggregate;
     protected AnAggregate the_result;
     protected AnAggregate[] the_results;
-    
+
     protected override void before_each()
     {
         base.before_each();
@@ -43,7 +43,7 @@ public abstract partial class PersistenceSpecsTemplate(Func<IRepository> reposit
     {
         the_repository.Save(third_aggregate).Await();
     }
-    
+
     protected void it_is_deleted()
     {
         the_repository.Delete(the_aggregate).Await();
@@ -63,7 +63,7 @@ public abstract partial class PersistenceSpecsTemplate(Func<IRepository> reposit
     {
         the_results = the_repository.GetAll<AnAggregate>().Await();
     }
-    
+
     protected void the_aggregate_is_retrieved()
     {
         the_result.Id.should_be(the_aggregate.Id);

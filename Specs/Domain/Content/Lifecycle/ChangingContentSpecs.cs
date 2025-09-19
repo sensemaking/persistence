@@ -3,7 +3,7 @@ using Fdb.Rx.Domain;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain.Lifecycle;
+namespace Sensemaking.Specs.Domain.Lifecycle;
 
 public class ChangingContentSpecs : CommonLifecycleSteps
 {
@@ -86,7 +86,7 @@ public class ChangingContentSpecs : CommonLifecycleSteps
         When(it_is_changed_by(system_user));
         Then(changes_made(ContentLifecycles.Suspended, system_user, null));
     }
-    
+
     private void retired_content_changed_by_a_human()
     {
         Given(some_retired_content);
@@ -132,7 +132,7 @@ public class ChangingContentSpecs : CommonLifecycleSteps
             if (changed_by.IsHuman || has_previous_human_edits())
                 And(it_must_be_made_ready_for_qc(changed_by));
             else
-                And(it_is_automatically_ready_for_qc); 
+                And(it_is_automatically_ready_for_qc);
         };
     }
 
@@ -162,7 +162,7 @@ public class ChangingContentSpecs : CommonLifecycleSteps
                 return;
             }
 
-            if(readyForQc)
+            if (readyForQc)
             {
                 content.HasTransition(Transitions.MakeReadyForQc).should_be_false();
                 content.HasTransition(Transitions.Qc).should_be_true();
@@ -186,7 +186,7 @@ public class ChangingContentSpecs : CommonLifecycleSteps
                 return;
             }
 
-            if(readyForQc)
+            if (readyForQc)
             {
                 content.HasTransitionFor(user, Transitions.MakeReadyForQc).should_be_false();
                 content.HasTransitionFor(user, Transitions.Qc).should_be_true();

@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain.Lifecycle;
+namespace Sensemaking.Specs.Domain.Lifecycle;
 
 public class DeletingContentSpecs : CommonLifecycleSteps
 {

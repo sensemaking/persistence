@@ -6,7 +6,7 @@ using Sensemaking.Monitoring;
 using Fdb.Rx.Persistence.Dapper;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper.Monitoring;
+namespace Sensemaking.Specs.Persistence.Dapper.Monitoring;
 
 public partial class DbMonitorSpecs
 {

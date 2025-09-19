@@ -1,5 +1,5 @@
 ﻿using System.Runtime.CompilerServices;
 
-[assembly: InternalsVisibleTo("Fdb.Rx.Testing.Persistence.Dapper")]
+[assembly: InternalsVisibleTo("Sensemaking.Specs.Persistence.Dapper")]
 [assembly: InternalsVisibleTo("Fdb.Rx.Dapper.Bdd")]
-[assembly: InternalsVisibleTo("Fdb.Rx.Testing.Persistence.Dapper.Bdd")]
+[assembly: InternalsVisibleTo("Sensemaking.Specs.Persistence.Dapper.Bdd")]

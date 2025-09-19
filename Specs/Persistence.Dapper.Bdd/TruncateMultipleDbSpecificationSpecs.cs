@@ -1,7 +1,7 @@
 ﻿using Fdb.Rx.Test.Dapper;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.PersistenceTest.Dapper;
+namespace Sensemaking.Specs.PersistenceTest.Dapper;
 
 [TestFixture]
 public partial class TruncateMultipleDbSpecificationSpecs : TruncateDbSpecification

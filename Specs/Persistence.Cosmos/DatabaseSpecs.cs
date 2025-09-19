@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos;
+namespace Sensemaking.Specs.Persistence.Cosmos;
 
 public partial class DatabaseSpecs : Specification
 {

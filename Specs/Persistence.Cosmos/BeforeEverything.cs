@@ -3,7 +3,7 @@ using Fdb.Rx.Test.Cosmos;
 using Microsoft.Azure.Cosmos;
 using NUnit.Framework;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos;
+namespace Sensemaking.Specs.Persistence.Cosmos;
 
 [SetUpFixture]
 public class BeforeEverything

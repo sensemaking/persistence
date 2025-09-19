@@ -9,7 +9,7 @@ using NSubstitute;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [TestFixture]
 public partial class ContentRepositorySpecs
@@ -57,9 +57,9 @@ public partial class ContentRepositorySpecs
         the_repository = RepositoryBuilder.For.Dapper(db)
             .Register(collection, validator)
             .Register<StubAggregate>(non_content_collection, null)
-            .Handling(() => new IHandleDomainEvents[]{deleteHandler, changeHandler, eventHandler})
+            .Handling(() => new IHandleDomainEvents[] { deleteHandler, changeHandler, eventHandler })
             .Get().Content;
-        
+
         db.Execute($"TRUNCATE TABLE {collection}", commandType: CommandType.Text);
         db.Execute($"TRUNCATE TABLE {published_collection}", commandType: CommandType.Text);
         db.Execute($"TRUNCATE TABLE {non_content_collection}", commandType: CommandType.Text);
@@ -151,7 +151,7 @@ public partial class ContentRepositorySpecs
 
     private void the_domain_event_handler_can_use_the_repository()
     {
-        var repositories = (IRepositories) domain_change_handle.ReceivedCalls().ToArray().Single().GetArguments().Single();
+        var repositories = (IRepositories)domain_change_handle.ReceivedCalls().ToArray().Single().GetArguments().Single();
         var saved_aggregate = new StubAggregate();
         repositories.Repository.Save(saved_aggregate).Await();
         var aggregate = repositories.Repository.Get<StubAggregate>(saved_aggregate.Id.ToString()).Await();
@@ -165,7 +165,7 @@ public partial class ContentRepositorySpecs
     }
 
     internal class FakeChangedDomainEventHandlerWithRepository<T> : DomainEventHandler<Changed<T>> where T : IAggregate
-    { 
+    {
         private readonly Action<IRepositories> HandleEvent;
 
         public FakeChangedDomainEventHandlerWithRepository(Action<IRepositories> handleEvent)

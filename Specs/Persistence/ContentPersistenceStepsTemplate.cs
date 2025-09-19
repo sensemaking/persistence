@@ -5,9 +5,9 @@ using Fdb.Rx.Domain;
 using Fdb.Rx.Test;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence;
+namespace Sensemaking.Specs.Persistence;
 
-public abstract partial class ContentPersistenceSpecsTemplate 
+public abstract partial class ContentPersistenceSpecsTemplate
 {
     protected const string container_name = "MyContentContainer";
     protected const string aggregate_content = "I am some of the most interesting content ever scribed.";
@@ -29,7 +29,7 @@ public abstract partial class ContentPersistenceSpecsTemplate
     protected override void before_each()
     {
         base.before_each();
-        
+
         persistence = persistenceFactory();
         persistence.GetTypeRegistration().Register<StubContent>(container_name, null);
         the_content = new StubContent(Guid.NewGuid().ToString(), aggregate_content);
@@ -53,7 +53,7 @@ public abstract partial class ContentPersistenceSpecsTemplate
     {
         persistence.Persist(the_third_content).Await();
     }
-    
+
     protected void it_is_removed()
     {
         persistence.Remove(the_content).Await();
@@ -93,7 +93,7 @@ public abstract partial class ContentPersistenceSpecsTemplate
     {
         the_result.should_be_null();
     }
-    
+
     private void it_is_persisted_as_live()
     {
         persistence.PersistAsLive(the_content).Await();

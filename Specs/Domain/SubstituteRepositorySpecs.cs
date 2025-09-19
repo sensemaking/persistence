@@ -3,7 +3,7 @@ using Fdb.Rx.Test;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 [TestFixture]
 public partial class SubstituteRepositoriesSpecs : Specification
@@ -31,7 +31,7 @@ public partial class SubstituteRepositoriesSpecs : Specification
 
         When(when_getting_multiple(stub_aggregate, another_stub_aggregate));
         Then(the_aggregates_are_returned(stub_aggregate, another_stub_aggregate));
-        
+
         When(when_getting_all);
         Then(all_aggregates_are_returned);
     }
@@ -72,7 +72,7 @@ public partial class SubstituteRepositoriesSpecs : Specification
             When(deleting(stub_aggregate));
             Then(it_was_deleted(stub_aggregate));
         });
-        
+
         scenario(() =>
         {
             Given(a_delete_is_mocked_for(stub_aggregate));

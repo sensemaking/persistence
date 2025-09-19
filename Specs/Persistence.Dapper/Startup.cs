@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper;
+namespace Sensemaking.Specs.Persistence.Dapper;
 
 [SetUpFixture]
 public class Startup

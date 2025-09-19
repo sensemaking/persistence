@@ -1,7 +1,7 @@
-﻿ using System;
- using Sensemaking.Monitoring;
+﻿using System;
+using Sensemaking.Monitoring;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper.Monitoring;
+namespace Sensemaking.Specs.Persistence.Dapper.Monitoring;
 
 public class FakeInstanceMonitor : InstanceMonitor
 {

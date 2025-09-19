@@ -3,7 +3,7 @@ using Fdb.Rx.Test;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Persistence.Dapper.Monitoring;
+namespace Sensemaking.Specs.Persistence.Dapper.Monitoring;
 
 [TestFixture]
 public partial class DbMonitorSpecs : Specification

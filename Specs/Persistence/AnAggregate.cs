@@ -1,6 +1,6 @@
 using Fdb.Rx.Domain;
 
-namespace Fdb.Rx.Testing.Persistence;
+namespace Sensemaking.Specs.Persistence;
 
 public class AnAggregate : Aggregate<string>
 {

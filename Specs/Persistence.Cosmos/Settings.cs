@@ -2,12 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using ConfigurationBuilder = Microsoft.Extensions.Configuration.ConfigurationBuilder;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos;
+namespace Sensemaking.Specs.Persistence.Cosmos;
 
 public static class Settings
 {
-    internal static readonly IConfiguration Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build(); 
-        
+    internal static readonly IConfiguration Configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json", false, true).Build();
+
     public static class CosmosDb
     {
         public static readonly string Endpoint = Configuration["Cosmos.Endpoint"];

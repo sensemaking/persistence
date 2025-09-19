@@ -5,7 +5,7 @@ using Fdb.Rx.Domain.Events;
 using NSubstitute;
 using Sensemaking.Bdd;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 public partial class DispatcherSpecs
 {
@@ -17,7 +17,7 @@ public partial class DispatcherSpecs
     {
         the_event = new TestEvent();
     }
-        
+
     private void a_repository() { }
 
     private void a_handler_for_the_event()
@@ -34,7 +34,7 @@ public partial class DispatcherSpecs
     {
         var events = new Queue<DomainEvent>();
         events.Enqueue(the_event);
-        var the_dispatcher = new DomainEventDispatcher(() => new IHandleDomainEvents[] { the_handler});
+        var the_dispatcher = new DomainEventDispatcher(() => new IHandleDomainEvents[] { the_handler });
         the_dispatcher.Repositories = the_repositories;
         the_dispatcher.Dispatch(events);
     }

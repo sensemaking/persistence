@@ -2,7 +2,7 @@
 using Fdb.Rx.Domain;
 using Fdb.Rx.Domain.Events;
 
-namespace Fdb.Rx.Testing.Domain;
+namespace Sensemaking.Specs.Domain;
 
 public class StubAggregate : Aggregate<Guid>
 {
@@ -12,7 +12,7 @@ public class StubAggregate : Aggregate<Guid>
     }
 
     public string Content { get; private set; }
-        
+
     public void RaiseEvent()
     {
         Events.Enqueue(new StubEvent());
@@ -20,7 +20,7 @@ public class StubAggregate : Aggregate<Guid>
 
     public class StubEvent : DomainEvent
     {
-                
+
     }
 }
 

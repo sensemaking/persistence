@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
-        <RootNamespace>Fdb.Rx.Testing.Persistence.Blob</RootNamespace>
-        <AssemblyName>Fdb.Rx.Testing.Persistence.Blob</AssemblyName>
+        <RootNamespace>Sensemaking.Specs.Persistence.Blob</RootNamespace>
+        <AssemblyName>Sensemaking.Specs.Persistence.Blob</AssemblyName>
         <Version>1.0.0</Version>
         <Authors>First Databank</Authors>
         <Copyright>Copyright © 2025</Copyright>

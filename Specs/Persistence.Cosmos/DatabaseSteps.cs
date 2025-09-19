@@ -5,9 +5,9 @@ using Microsoft.Azure.Cosmos;
 using Sensemaking.Bdd;
 using Database = Fdb.Rx.Persistence.Cosmos.Database;
 
-namespace Fdb.Rx.Testing.Persistence.Cosmos;
+namespace Sensemaking.Specs.Persistence.Cosmos;
 
-public partial class DatabaseSpecs 
+public partial class DatabaseSpecs
 {
     private CosmosClient first_cosmos_client;
     private CosmosClient second_cosmos_client;
@@ -19,7 +19,7 @@ public partial class DatabaseSpecs
         second_cosmos_client = null;
     }
 
-    private void we_configure_cosmos_again() 
+    private void we_configure_cosmos_again()
     {
         Database.Configure(new KeyAccessCosmosConnection(Settings.CosmosDb.Endpoint, Settings.CosmosDb.AccessKey), Settings.CosmosDb.Database);
     }
