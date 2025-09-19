@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+    <RootNamespace>Fdb.Rx.Persistence.Cosmos</RootNamespace>
+    <AssemblyName>Fdb.Rx.Persistence.Cosmos</AssemblyName>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <PackageId>Fdb.Rx.Common.Persistence.Cosmos</PackageId>
+    <Authors>First Databank</Authors>
+    <Description>Basic Cosmos access, configuration and monitoring</Description>
+    <Copyright>Copyright © 2025</Copyright>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Persistence.Cosmos.Domain</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Persistence.Cosmos.Query</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Testing.Persistence.Cosmos</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sensemaking.Serialization" Version="1.0.221" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.221" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.53.1" />
+  </ItemGroup>
+
+</Project>

@@ -2,21 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Sensemaking.Domain
+namespace Fdb.Rx.Domain.Events
 {
     public interface IDispatchDomainEvents
     {
         void Dispatch(Queue<DomainEvent> events);
+        IRepositories Repositories { get; set; }
     }
     
-    public class DomainEventDispatcher : IDispatchDomainEvents
+    public class DomainEventDispatcher(Func<IEnumerable<IHandleDomainEvents>> handlerFactory) : IDispatchDomainEvents
     {
-        private readonly IEnumerable<IHandleDomainEvents> handlers;
+        private IEnumerable<IHandleDomainEvents>? handlers;
 
-        public DomainEventDispatcher(IEnumerable<IHandleDomainEvents> handlers)
-        {
-            this.handlers = handlers;
-        }
+        public IRepositories Repositories { get; set; } = null!;
 
         public void Dispatch(Queue<DomainEvent> events)
         {
@@ -24,9 +22,17 @@ namespace Sensemaking.Domain
                 Dispatch(events.Dequeue());
         }
 
-        private void Dispatch(DomainEvent evnt)
+        private void Dispatch(DomainEvent @event)
         {
-            handlers.Where(handler => handler.CanHandle(evnt)).ForEach(handler => handler.Handle(evnt));
+            handlers ??= handlerFactory();
+            handlers.Where(handler => handler.CanHandle(@event)).ForEach(handler =>
+            {
+                handler.Repositories = Repositories;
+                if (handler.RecordMetrics)
+                    Sensemaking.Logging.TimeThis(() => handler.Handle(@event), handler.GetType().Name);
+                else
+                    handler.Handle(@event);
+            });
         }
     }
 }

@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+    <RootNamespace>Fdb.Rx.Persistence.Dapper</RootNamespace>
+    <AssemblyName>Fdb.Rx.Persistence.Dapper</AssemblyName>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <Version>1.0.0</Version>
+    <PackageId>Fdb.Rx.Common.Persistence.Dapper</PackageId>
+    <Authors>First Databank</Authors>
+    <Description>Persistence services using Dapper</Description>
+    <Copyright>Copyright © 2025</Copyright>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Testing.Persistence.Dapper</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Dapper.Bdd</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Fdb.Rx.Testing.Persistence.Dapper.Bdd</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.16.0" />
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.221" />
+    <PackageReference Include="Sensemaking.Resilience" Version="1.0.221" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.221" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Persistence.Security\Persistence.Security.csproj" />
+    <ProjectReference Include="..\NodaTime.Dapper\NodaTime.Dapper.csproj" />
+  </ItemGroup>
+
+</Project>

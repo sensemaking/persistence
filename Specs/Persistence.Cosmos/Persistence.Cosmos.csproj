@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <RootNamespace>Fdb.Rx.Testing.Persistence.Cosmos</RootNamespace>
+        <AssemblyName>Fdb.Rx.Testing.Persistence.Cosmos</AssemblyName>
+        <Version>1.0.0</Version>
+        <Authors>First Databank</Authors>
+        <Copyright>Copyright © 2025</Copyright>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <OutputPath>bin\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <OutputPath>bin\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Sensemaking.Bdd" Version="1.0.221" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+        <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Persistence.Cosmos.Domain\Persistence.Cosmos.Domain.csproj" />
+      <ProjectReference Include="..\..\Persistence.Cosmos.Query.Sql\Persistence.Cosmos.Query.Sql.csproj" />
+      <ProjectReference Include="..\..\Persistence.Cosmos.Query\Persistence.Cosmos.Query.csproj" />
+      <ProjectReference Include="..\..\Persistence.Cosmos.Security.KeyAccess\Persistence.Cosmos.Security.KeyAccess.csproj" />
+      <ProjectReference Include="..\..\Persistence.Cosmos\Persistence.Cosmos.csproj" />
+      <ProjectReference Include="..\Cosmos.Bdd\Cosmos.Bdd.csproj" />
+      <ProjectReference Include="..\Cosmos.Bdd\Cosmos.Bdd.csproj" />
+      <ProjectReference Include="..\Persistence\Persistence.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="RepositoryBaseSpecs.cs" />
+      <Compile Remove="RepositorySyncSpecs.cs" />
+      <Compile Remove="RepositorySyncSteps.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+</Project>

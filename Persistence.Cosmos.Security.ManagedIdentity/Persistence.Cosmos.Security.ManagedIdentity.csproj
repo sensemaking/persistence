@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+    <RootNamespace>Fdb.Rx.Persistence.Cosmos.Security.ManagedIdentity</RootNamespace>
+    <AssemblyName>Fdb.Rx.Persistence.Cosmos.Security.ManagedIdentity</AssemblyName>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <PackageId>Fdb.Rx.Common.Persistence.Cosmos.Security.ManagedIdentity</PackageId>
+    <Authors>First Databank</Authors>
+    <Description>Allows managed identity connections to Cosmos</Description>
+    <Copyright>Copyright © 2025</Copyright>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Identity" Version="1.16.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.53.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Persistence.Cosmos\Persistence.Cosmos.csproj" />
+  </ItemGroup>
+
+</Project>

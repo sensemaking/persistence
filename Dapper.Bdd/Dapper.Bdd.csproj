@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net9.0</TargetFrameworks>
+        <RootNamespace>Fdb.Rx.Dapper.Bdd</RootNamespace>
+        <AssemblyName>Fdb.Rx.Dapper.Bdd</AssemblyName>
+        <Version>1.0.0</Version>
+        <LangVersion>default</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackageId>Fdb.Rx.Dapper.Bdd</PackageId>
+        <Authors>First Databank</Authors>
+        <Description>Deployment package for Bdd &amp; Dapper testing framework</Description>
+        <Copyright>Copyright © 2025</Copyright>
+        <IsPackable>true</IsPackable>
+        <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <OutputPath>bin\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <OutputPath>bin\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Sensemaking.Bdd" Version=  "1.0.221" />
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
+        <Reference Include="System.Transactions" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Persistence.Dapper\Persistence.Dapper.csproj" />
+    </ItemGroup>
+
+</Project>

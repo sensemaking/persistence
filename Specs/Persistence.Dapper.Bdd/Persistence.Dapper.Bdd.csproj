@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Fdb.Rx.Testing.Persistence.Dapper.Bdd</RootNamespace>
+    <AssemblyName>Fdb.Rx.Testing.Persistence.Dapper.Bdd</AssemblyName>
+    <Version>1.0.0</Version>
+    <Authors>First Databank</Authors>
+    <Copyright>Copyright © 2025</Copyright>
+    <LangVersion>default</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.221" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Persistence.Dapper\Persistence.Dapper.csproj" />
+    <ProjectReference Include="..\..\Persistence.Dapper.Domain\Persistence.Dapper.Domain.csproj" />
+    <ProjectReference Include="..\..\Dapper.Bdd\Dapper.Bdd.csproj" />
+    <ProjectReference Include="..\Persistence\Persistence.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>  
+
+</Project>

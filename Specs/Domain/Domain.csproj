@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <RootNamespace>Fdb.Rx.Testing.Domain</RootNamespace>
+    <AssemblyName>Fdb.Rx.Testing.Domain</AssemblyName>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Authors>First Databank</Authors>
+    <Copyright>Copyright © 2025</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Sensemaking.Core" Version="1.0.221" />
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.221" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Persistence.Dapper.Domain\Persistence.Dapper.Domain.csproj" />
+    <ProjectReference Include="..\..\Persistence.Dapper\Persistence.Dapper.csproj" />
+    <ProjectReference Include="..\..\Domain.Bdd\Domain.Bdd.csproj" />
+  </ItemGroup>
+  
+</Project>

@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net9.0</TargetFrameworks>
+    <RootNamespace>Fdb.Rx.Persistence.Cosmos.Query.Sql</RootNamespace>
+    <AssemblyName>Fdb.Rx.Persistence.Cosmos.Query.Sql</AssemblyName>
+    <Version>1.0.0</Version>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <PackageId>Fdb.Rx.Common.Persistence.Cosmos.Query.Sql</PackageId>
+    <Authors>First Databank</Authors>
+    <Description>Query services using Sql Cosmos</Description>
+    <Copyright>Copyright © 2025</Copyright>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Persistence.Cosmos.Document\Persistence.Cosmos.Document.csproj" />
+    <ProjectReference Include="..\Persistence.Cosmos.Query\Persistence.Cosmos.Query.csproj" />
+  </ItemGroup>
+
+</Project>
