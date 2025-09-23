@@ -33,9 +33,7 @@ jobs:
         with:
           dotnet-version: |
               9.x            
-          source-url: https://nuget.pkg.github.com/sensemaking/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json                  
 
       - name: Have nuget dependencies changed
         uses: actions/cache@v4
@@ -46,10 +44,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget
 
-      - name: Update Fdb Nuget Dependencies
+      - name: Update Nuget Dependencies
         run: |
           dotnet tool install --global dotnet-outdated-tool
-          dotnet outdated --include Fdb --upgrade
+          dotnet outdated --upgrade
           dotnet restore
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v5
@@ -92,8 +90,6 @@ jobs:
         with:
           dotnet-version: 9.x
           source-url: https://nuget.pkg.github.com/sensemaking/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
         run: dotnet test ./Testing/Domain/Domain.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
@@ -126,8 +122,6 @@ jobs:
         with:
           dotnet-version: 9.x
           source-url: https://nuget.pkg.github.com/sensemaking/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run Azurite in Background
         shell: bash
@@ -151,8 +145,6 @@ jobs:
         with:
           dotnet-version: 9.x
           source-url: https://nuget.pkg.github.com/sensemaking/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Start up emulator
         run: |
@@ -202,8 +194,6 @@ jobs:
         with:
           dotnet-version: 9.x
           source-url: https://nuget.pkg.github.com/sensemaking/index.json
-        env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
         run: dotnet test ./Testing/Persistence.Dapper/Persistence.Dapper.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
@@ -232,7 +222,7 @@ jobs:
             9.x
           source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
 
       - name: Cache packages
         uses: actions/cache@v4
