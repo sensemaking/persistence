@@ -53,6 +53,8 @@ jobs:
           dotnet restore
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v5
+        env:
+            NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Detect Changes
         uses: dorny/paths-filter@v3
