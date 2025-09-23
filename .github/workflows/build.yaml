@@ -32,11 +32,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: |
-            8.x
-            9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+              9.x            
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Have nuget dependencies changed
         uses: actions/cache@v4
@@ -92,9 +91,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
         run: dotnet test ./Testing/Domain/Domain.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
@@ -126,9 +125,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Run Azurite in Background
         shell: bash
@@ -151,9 +150,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Start up emulator
         run: |
@@ -202,9 +201,9 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
         run: dotnet test ./Testing/Persistence.Dapper/Persistence.Dapper.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
@@ -231,9 +230,9 @@ jobs:
           dotnet-version: |
             8.x
             9.x
-          source-url: https://nuget.pkg.github.com/HearstHealthInternational/index.json
+          source-url: https://nuget.pkg.github.com/sensemaking/index.json
         env:
-          NUGET_AUTH_TOKEN: ${{secrets.PACKAGES_PAT_TOKEN}}
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Cache packages
         uses: actions/cache@v4
@@ -267,7 +266,7 @@ jobs:
 
       - name: Publish Packages
         if: needs.create_nuget_cache.outputs.DETECTED_CHANGES == 'true'
-        run: dotnet nuget push '${{ github.workspace }}/packages/*.nupkg' --api-key ${{github.token}} --source https://nuget.pkg.github.com/HearstHealthInternational/index.json
+        run: dotnet nuget push '${{ github.workspace }}/packages/*.nupkg' --api-key ${{github.token}} --source https://nuget.pkg.github.com/sensemaking/index.json
 
       - name: Cleanup cache
         run: |
