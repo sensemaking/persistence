@@ -52,7 +52,7 @@ jobs:
           dotnet outdated --upgrade
           dotnet restore
         env:
-            NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
           
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v5
