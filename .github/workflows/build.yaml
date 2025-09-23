@@ -97,7 +97,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
-        run: dotnet test ./Testing/Domain/Domain.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
+        run: dotnet test ./Specs/Domain/Domain.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
 
   test_blob:
     runs-on: ubuntu-latest
@@ -135,7 +135,7 @@ jobs:
         run: azurite &
 
       - name: Test
-        run: dotnet test ./Testing/Persistence.Blob/Persistence.Blob.csproj --configuration Release --environment RunAzurite="false"
+        run: dotnet test ./Specs/Persistence.Blob/Persistence.Blob.csproj --configuration Release --environment RunAzurite="false"
 
   test_cosmos:
     runs-on: windows-latest
@@ -175,7 +175,7 @@ jobs:
         run: echo "::set-output name=windowsNugetHash::${{ hashFiles('**/*.csproj') }}"
 
       - name: Test
-        run: dotnet test ./Testing/Persistence.Cosmos/Persistence.Cosmos.csproj --configuration Release --environment CiIsManagingEmulator="true"
+        run: dotnet test ./Specs/Persistence.Cosmos/Persistence.Cosmos.csproj --configuration Release --environment CiIsManagingEmulator="true"
 
   test_dapper:
     runs-on: ubuntu-latest
@@ -207,7 +207,7 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Test
-        run: dotnet test ./Testing/Persistence.Dapper/Persistence.Dapper.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
+        run: dotnet test ./Specs/Persistence.Dapper/Persistence.Dapper.csproj --configuration Release --environment ServerConnectionString="Server=localhost;Integrated security=False;User=sa;Password=c0MplicatedP@ssword;TrustServerCertificate=True;"
 
   pack:
     runs-on: ubuntu-latest
