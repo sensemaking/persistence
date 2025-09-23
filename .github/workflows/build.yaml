@@ -50,14 +50,11 @@ jobs:
         run: |
           dotnet tool install --global dotnet-outdated-tool
           dotnet outdated --upgrade
-          dotnet restore
-        env:
-          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+          dotnet restore        
           
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v5
         
-
       - name: Detect Changes
         uses: dorny/paths-filter@v3
         id: changed
