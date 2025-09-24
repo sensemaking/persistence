@@ -25,7 +25,6 @@ namespace Sensemaking.Persistence.Dapper
         static DbReader()
         {
             NodaTimeForDapper.Register();
-            SqlMapper.AddTypeHandler(new PeriodHandler());
         }
 
         public IMonitor Monitor { get; private set; }

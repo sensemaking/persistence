@@ -7,9 +7,11 @@ namespace Sensemaking.NodaTime.Dapper
         public static void Register()
         {
             SqlMapper.AddTypeHandler(InstantHandler.Default);
+            SqlMapper.AddTypeHandler(PeriodHandler.Default);
             SqlMapper.AddTypeHandler(LocalDateHandler.Default);
             SqlMapper.AddTypeHandler(LocalDateTimeHandler.Default);
             SqlMapper.AddTypeHandler(LocalTimeHandler.Default);
+            SqlMapper.AddTypeHandler(OffsetDateHandler.Default);
             SqlMapper.AddTypeHandler(OffsetDateTimeHandler.Default);
         }
     }

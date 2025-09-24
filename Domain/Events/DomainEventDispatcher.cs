@@ -29,7 +29,7 @@ namespace Sensemaking.Domain.Events
             {
                 handler.Repositories = Repositories;
                 if (handler.RecordMetrics)
-                    Sensemaking.Logging.TimeThis(() => handler.Handle(@event), handler.GetType().Name);
+                    Logging.TimeThis(() => handler.Handle(@event), handler.GetType().Name);
                 else
                     handler.Handle(@event);
             });
