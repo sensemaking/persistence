@@ -8,7 +8,6 @@ using Dapper;
 using Sensemaking.Monitoring;
 using Sensemaking.NodaTime.Dapper;
 using Sensemaking.Persistence.Security;
-using Sensemaking.Resilience;
 
 namespace Sensemaking.Persistence.Dapper
 {

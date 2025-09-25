@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Dapper;
 using FastMember;
 using Sensemaking.Persistence.Security;
-using Sensemaking.Resilience;
 using NodaTime;
 
 namespace Sensemaking.Persistence.Dapper
