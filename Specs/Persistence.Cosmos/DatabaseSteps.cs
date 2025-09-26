@@ -1,8 +1,6 @@
-using System;
 using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
 using Sensemaking.Bdd;
 using Microsoft.Azure.Cosmos;
-using Sensemaking.Bdd;
 using Database = Sensemaking.Persistence.Cosmos.Database;
 
 namespace Sensemaking.Specs.Persistence.Cosmos;
