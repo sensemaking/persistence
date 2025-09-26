@@ -7,8 +7,6 @@ using Sensemaking.Persistence.Cosmos.Query.Sql;
 using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
 using Sensemaking.Bdd;
 using Microsoft.Azure.Cosmos;
-using Sensemaking.Bdd;
-using Database = Sensemaking.Persistence.Cosmos.Database;
 using User = Sensemaking.Domain.User;
 
 namespace Sensemaking.Specs.Persistence.Cosmos.Query;

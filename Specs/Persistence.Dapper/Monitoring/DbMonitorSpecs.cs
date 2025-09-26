@@ -1,7 +1,5 @@
-﻿using Sensemaking.Monitoring;
-using Sensemaking.Bdd;
+﻿using Sensemaking.Bdd;
 using NUnit.Framework;
-using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper.Monitoring;
 

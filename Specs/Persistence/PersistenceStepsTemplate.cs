@@ -1,8 +1,6 @@
 ﻿using Sensemaking.Domain;
 using Sensemaking.Bdd;
 using System;
-using System.Linq;
-using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence;
 

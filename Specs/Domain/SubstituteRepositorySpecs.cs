@@ -1,7 +1,6 @@
 ﻿using System.Serialization;
 using Sensemaking.Bdd;
 using NUnit.Framework;
-using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Domain;
 
