@@ -34,16 +34,16 @@ public partial class ContentRepositorySpecs
     protected override void before_all()
     {
         base.before_all();
-        db.Execute($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
-        db.Execute($"CREATE TABLE {published_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
-        db.Execute($"CREATE TABLE {non_content_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
+        db.ExecuteAsync($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"CREATE TABLE {published_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"CREATE TABLE {non_content_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
     }
 
     protected override void after_all()
     {
-        db.Execute($"DROP TABLE {collection}", commandType: CommandType.Text);
-        db.Execute($"DROP TABLE {published_collection}", commandType: CommandType.Text);
-        db.Execute($"DROP TABLE {non_content_collection}", commandType: CommandType.Text);
+        db.ExecuteAsync($"DROP TABLE {collection}", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"DROP TABLE {published_collection}", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"DROP TABLE {non_content_collection}", commandType: CommandType.Text).Await();
         base.after_all();
     }
 
@@ -60,9 +60,9 @@ public partial class ContentRepositorySpecs
             .Handling(() => new IHandleDomainEvents[] { deleteHandler, changeHandler, eventHandler })
             .Get().Content;
 
-        db.Execute($"TRUNCATE TABLE {collection}", commandType: CommandType.Text);
-        db.Execute($"TRUNCATE TABLE {published_collection}", commandType: CommandType.Text);
-        db.Execute($"TRUNCATE TABLE {non_content_collection}", commandType: CommandType.Text);
+        db.ExecuteAsync($"TRUNCATE TABLE {collection}", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"TRUNCATE TABLE {published_collection}", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"TRUNCATE TABLE {non_content_collection}", commandType: CommandType.Text).Await();
     }
 
     private void persistence_is_mocked()

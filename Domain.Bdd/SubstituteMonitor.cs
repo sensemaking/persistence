@@ -1,6 +1,6 @@
 ﻿using Sensemaking.Monitoring;
 
-namespace Sensemaking.Test.Domain
+namespace Sensemaking.Bdd.Domain
 {
     internal class Monitor : InstanceMonitor
     {

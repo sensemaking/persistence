@@ -8,6 +8,7 @@ using Sensemaking.Persistence.Dapper;
 using Sensemaking.Specs.Persistence.Dapper.Monitoring;
 using NSubstitute;
 using NSubstitute.ClearExtensions;
+using NSubstitute.ExceptionExtensions;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper;
@@ -15,9 +16,9 @@ namespace Sensemaking.Specs.Persistence.Dapper;
 public partial class MultipleDbSpecs
 {
     private const string command_text = "INSERT INTO SomeTable";
-    private static readonly string[] results = { "Result", "Initial Result" };
-    private static readonly string[] results_2 = { "Result", "Additional Result" };
-    private static readonly string[] merged_results = { "Result", "Initial Result", "Additional Result" };
+    private static readonly string[] results = ["Result", "Initial Result"];
+    private static readonly string[] results_2 = ["Result", "Additional Result"];
+    private static readonly string[] merged_results = ["Result", "Initial Result", "Additional Result"];
     private static readonly object constructed_result = new { Result = "Constructed" };
     private MultipleDb.QueryOptions query_option;
     private IDb available_database;
@@ -67,10 +68,10 @@ public partial class MultipleDbSpecs
     {
         unavailable_database.ClearSubstitute();
         unavailable_database
-            .Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
-                Arg.Any<Func<SqlException, Exception>>()).Returns(x => throw new Exception("Why query me Willis"));
+            .QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+                Arg.Any<Func<SqlException, Exception>>()).Throws(x => throw new Exception("Why query me Willis"));
         unavailable_database
-            .Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            .QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
                 Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>())
             .Returns(x => throw new Exception("Why query me Willis"));
         unavailable_database.Monitor.Returns(new FakeInstanceMonitor("Somtething went wrongtastic."));
@@ -79,63 +80,63 @@ public partial class MultipleDbSpecs
 
     private void the_first_has_results()
     {
-        available_database.Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+        available_database.QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
             Arg.Any<Func<SqlException, Exception>>()).Returns(results);
         available_database
-            .Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            .QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
                 Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(constructed_result);
         available_database_2
-            .Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
-                Arg.Any<Func<SqlException, Exception>>()).Returns(Enumerable.Empty<string>());
-        available_database_2.Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
-            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null);
+            .QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+                Arg.Any<Func<SqlException, Exception>>()).Returns([]);
+        available_database_2.QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null as object);
     }
 
     private void the_second_has_results()
     {
         available_database
-            .Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
-                Arg.Any<Func<SqlException, Exception>>()).Returns(Enumerable.Empty<string>());
-        available_database.Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
-            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null);
-        available_database_2.Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+            .QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+                Arg.Any<Func<SqlException, Exception>>(), Arg.Any<int>()).Returns([]);
+        available_database.QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null as object);
+        available_database_2.QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
             Arg.Any<Func<SqlException, Exception>>()).Returns(results);
         available_database_2
-            .Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            .QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
                 Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(constructed_result);
     }
 
     private void the_second_has_different_results()
     {
-        available_database_2.Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+        available_database_2.QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
             Arg.Any<Func<SqlException, Exception>>()).Returns(results_2);
         available_database_2
-            .Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            .QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
                 Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(constructed_result);
     }
 
     private void neither_has_results()
     {
         available_database
-            .Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
-                Arg.Any<Func<SqlException, Exception>>()).Returns(Enumerable.Empty<string>());
-        available_database.Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
-            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null);
+            .QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+                Arg.Any<Func<SqlException, Exception>>()).Returns([]);
+        available_database.QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null as object);
         available_database_2
-            .Query<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
-                Arg.Any<Func<SqlException, Exception>>()).Returns(Enumerable.Empty<string>());
-        available_database_2.Query(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
-            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null);
+            .QueryAsync<string>(Arg.Any<string>(), Arg.Any<object>(), Arg.Any<CommandType>(),
+                Arg.Any<Func<SqlException, Exception>>()).Returns([]);
+        available_database_2.QueryAsync(Arg.Any<string>(), Arg.Any<Func<SqlMapper.GridReader, object>>(), Arg.Any<object>(),
+            Arg.Any<CommandType>(), Arg.Any<Func<SqlException, Exception>>()).Returns(null as object);
     }
 
     private void executing_a_command()
     {
-        new MultipleDb(all_databases).Execute(command_text);
+        new MultipleDb(all_databases).ExecuteAsync(command_text).Await();
     }
 
     private void querying()
     {
-        query_result = new MultipleDb(all_databases, query_option).Query<string>("SELECT *");
+        query_result = new MultipleDb(all_databases, query_option).QueryAsync<string>("SELECT *").Await();
     }
 
     private void querying(Action<Action> then)
@@ -145,7 +146,7 @@ public partial class MultipleDbSpecs
 
     private void querying_and_constructing_results()
     {
-        constructed_query_result = new MultipleDb(all_databases, query_option).Query<object>("SELECT *", reader => new { Result = "I haven't been returned by the query" });
+        constructed_query_result = new MultipleDb(all_databases, query_option).QueryAsync<object>("SELECT *", reader => new { Result = "I haven't been returned by the query" }).Await();
     }
 
     private void querying_and_constructing_results(Action<Action> then)
@@ -156,7 +157,7 @@ public partial class MultipleDbSpecs
     private void it_executes_against_all_available_databases()
     {
         all_databases.ForEach(x =>
-            (x.Monitor.Availability() ? x.Received() : x.DidNotReceive()).Execute(command_text));
+            (x.Monitor.Availability() ? x.Received() : x.DidNotReceive()).ExecuteAsync(command_text)).Await();
     }
 
     private void returns_the_results()
@@ -193,16 +194,16 @@ public partial class MultipleDbSpecs
             available_database.ClearReceivedCalls();
             available_database_2.ClearReceivedCalls();
             when();
-            if (available_database.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "Query"))
+            if (available_database.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "QueryAsync"))
             {
-                available_database_2.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "Query").should_be_false();
+                available_database_2.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "QueryAsync").should_be_false();
                 first_available_chosen = true;
             }
 
-            if (available_database_2.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "Query") &&
+            if (available_database_2.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "QueryAsync") &&
                 first_available_chosen)
             {
-                available_database.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "Query").should_be_false();
+                available_database.ReceivedCalls().Any(c => c.GetMethodInfo().Name == "QueryAsync").should_be_false();
                 "it".should_pass();
             }
         });

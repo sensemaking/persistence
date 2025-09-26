@@ -1,4 +1,4 @@
-using Sensemaking.Test.Domain;
+using Sensemaking.Bdd.Domain;
 
 namespace Sensemaking.Domain
 {

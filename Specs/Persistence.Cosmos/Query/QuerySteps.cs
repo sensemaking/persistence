@@ -5,7 +5,7 @@ using Sensemaking.Domain;
 using Sensemaking.Persistence.Cosmos;
 using Sensemaking.Persistence.Cosmos.Query.Sql;
 using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
-using Sensemaking.Test;
+using Sensemaking.Bdd;
 using Microsoft.Azure.Cosmos;
 using Sensemaking.Bdd;
 using Database = Sensemaking.Persistence.Cosmos.Database;

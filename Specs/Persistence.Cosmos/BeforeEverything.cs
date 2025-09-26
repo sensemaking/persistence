@@ -1,7 +1,7 @@
 ﻿using Sensemaking.Persistence.Cosmos.Security.KeyAccess;
-using Sensemaking.Test.Cosmos;
 using Microsoft.Azure.Cosmos;
 using NUnit.Framework;
+using Sensemaking.Cosmos.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Cosmos;
 

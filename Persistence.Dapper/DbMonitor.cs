@@ -14,7 +14,7 @@ namespace Sensemaking.Persistence.Dapper
         {
             try
             {
-                Db.Query<byte>("SELECT 1", commandType: CommandType.Text);
+                Db.QueryAsync<byte>("SELECT 1", commandType: CommandType.Text).Await();
                 return Sensemaking.Monitoring.Availability.Up();
             }
             catch (Exception ex)

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using Microsoft.Azure.Cosmos;
 
-namespace Sensemaking.Test.Cosmos
+namespace Sensemaking.Cosmos.Bdd
 {
     public static class CosmosEmulator
     {

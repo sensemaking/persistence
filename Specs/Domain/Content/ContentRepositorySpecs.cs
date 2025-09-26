@@ -1,5 +1,5 @@
 ﻿using System;
-using Sensemaking.Test;
+using Sensemaking.Bdd;
 using NUnit.Framework;
 using Sensemaking.Bdd;
 

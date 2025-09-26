@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Sensemaking.Domain;
-using Sensemaking.Test;
+using Sensemaking.Bdd;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence;

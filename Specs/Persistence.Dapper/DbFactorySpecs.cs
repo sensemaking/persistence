@@ -1,7 +1,6 @@
 ﻿using System;
-using Sensemaking.Test;
-using NUnit.Framework;
 using Sensemaking.Bdd;
+using NUnit.Framework;
 
 namespace Sensemaking.Specs.Persistence.Dapper;
 

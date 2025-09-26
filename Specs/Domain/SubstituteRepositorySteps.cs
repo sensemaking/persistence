@@ -1,6 +1,6 @@
 ﻿using System;
 using Sensemaking.Domain;
-using Sensemaking.Test.Domain;
+using Sensemaking.Bdd.Domain;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Domain;

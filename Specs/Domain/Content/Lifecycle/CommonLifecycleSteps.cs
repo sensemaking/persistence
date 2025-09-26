@@ -4,9 +4,8 @@ using System.Data;
 using Sensemaking.Domain;
 using Sensemaking.Domain.Events;
 using Sensemaking.Persistence.Dapper;
-using Sensemaking.Test;
-using NSubstitute;
 using Sensemaking.Bdd;
+using NSubstitute;
 
 namespace Sensemaking.Specs.Domain.Lifecycle;
 
@@ -40,14 +39,14 @@ public class CommonLifecycleSteps : Specification
     protected override void before_all()
     {
         base.before_all();
-        db.Execute($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
-        db.Execute($"CREATE TABLE {published_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
+        db.ExecuteAsync($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"CREATE TABLE {published_collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
     }
 
     protected override void after_all()
     {
-        db.Execute($"DROP TABLE {collection}", commandType: CommandType.Text);
-        db.Execute($"DROP TABLE {published_collection}", commandType: CommandType.Text);
+        db.ExecuteAsync($"DROP TABLE {collection}", commandType: CommandType.Text).Await();
+        db.ExecuteAsync($"DROP TABLE {published_collection}", commandType: CommandType.Text).Await();
         base.after_all();
     }
 

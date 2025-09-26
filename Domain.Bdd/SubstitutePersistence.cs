@@ -6,7 +6,7 @@ using Sensemaking.Domain;
 using Sensemaking.Monitoring;
 using System.Serialization;
 
-namespace Sensemaking.Test.Domain
+namespace Sensemaking.Bdd.Domain
 {
     internal class SubstitutePersistence : IPersist
     {

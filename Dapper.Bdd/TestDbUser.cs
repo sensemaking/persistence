@@ -1,9 +1,10 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Transactions;
 using Sensemaking.Persistence.Dapper;
 
-namespace Sensemaking.Test.Dapper;
+namespace Sensemaking.Bdd.Dapper;
 
 public class TestDbUser
 {
@@ -21,13 +22,13 @@ public class TestDbUser
 
         var database = new Db(adminConnectionString);
         var scope = new TransactionScope(TransactionScopeOption.Suppress);
-        database.Execute($@"IF NOT EXISTS(SELECT * FROM sys.server_principals WHERE name = '{user}')
-                CREATE LOGIN {user} WITH PASSWORD = '{password}'", commandType: CommandType.Text);
+        database.ExecuteAsync($@"IF NOT EXISTS(SELECT * FROM sys.server_principals WHERE name = '{user}')
+                CREATE LOGIN {user} WITH PASSWORD = '{password}'", commandType: CommandType.Text).Await();
 
-        database.Execute($@"IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = '{user}')
-                CREATE USER {user} FOR LOGIN {user}", commandType: CommandType.Text);
+        database.ExecuteAsync($@"IF NOT EXISTS(SELECT * FROM sys.database_principals WHERE name = '{user}')
+                CREATE USER {user} FOR LOGIN {user}", commandType: CommandType.Text).Await();
 
-        database.Execute($"sp_addrolemember", new { rolename = $"{role}", membername = $"{user}" });
+        database.ExecuteAsync($"sp_addrolemember", new { rolename = $"{role}", membername = $"{user}" }).Await();
         scope.Dispose();
 
         Connection = GetUserDb(adminConnectionString, user, password);

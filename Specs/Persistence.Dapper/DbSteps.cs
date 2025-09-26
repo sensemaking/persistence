@@ -5,8 +5,6 @@ using Microsoft.Data.SqlClient;
 using System.Linq;
 using Dapper;
 using Sensemaking.Persistence.Dapper;
-using Sensemaking.Test;
-using NodaTime;
 using Sensemaking.Bdd;
 
 namespace Sensemaking.Specs.Persistence.Dapper;
@@ -31,7 +29,7 @@ public partial class DbSpecs
     private long duration;
     private readonly Action<Db> onQueryRetry = _db =>
     {
-        _db.Execute($@"INSERT INTO {temp_table_name} (Id) SELECT @new_id;", new { new_id }, CommandType.Text);
+        _db.ExecuteAsync($@"INSERT INTO {temp_table_name} (Id) SELECT @new_id;", new { new_id }, CommandType.Text).Await();
     };
 
     protected override void before_all()
@@ -73,27 +71,17 @@ public partial class DbSpecs
 
     private void executing()
     {
-        db.Execute($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text);
+        db.ExecuteAsync($"INSERT INTO {table_name} SELECT @new_id", new { new_id }, CommandType.Text).Await();
     }
 
     private void querying()
     {
-        query_result = db.Query<Guid>($"SELECT Id FROM {table_name} WHERE Id = @existing_id", new { existing_id });
+        query_result = db.QueryAsync<Guid>($"SELECT Id FROM {table_name} WHERE Id = @existing_id", new { existing_id }).Await();
     }
 
     private void querying_async()
     {
         query_result = db.QueryAsync<Guid>($"SELECT Id FROM {table_name} WHERE Id = @existing_id", new { existing_id }).Await();
-    }
-
-    private void copying_in_bulk()
-    {
-        duration = db.Copy(table_name, copiedIds);
-    }
-
-    private void copying_in_bulk_async()
-    {
-        duration = db.CopyAsync(table_name, copiedIds).Await();
     }
 
     private void there_is_a_command()
@@ -105,19 +93,9 @@ public partial class DbSpecs
         command.Prepare();
     }
 
-    private void copying_in_bulk_from_the_previous_command()
-    {
-        duration = db.Copy(table_name, command);
-    }
-
-    private void copying_in_bulk_from_the_previous_command_async()
-    {
-        duration = db.CopyAsync(table_name, command).Await();
-    }
-
     private void querying_constructed_result()
     {
-        constructed_query_result = db.Query(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id });
+        constructed_query_result = db.QueryAsync(proc_name, reader => reader.ReadSingle<Guid>().ToString(), new { id = existing_id }).Await();
     }
 
     private void querying_constructed_result_async()
@@ -149,7 +127,7 @@ public partial class DbSpecs
     private void it_is_copied()
     {
         var expected = copiedIds.Append(new InputIds(existing_id)).Select(i => i.Id);
-        var actual = db.Query<Guid>($"SELECT Id FROM {table_name}", CommandType.Text);
+        var actual = db.QueryAsync<Guid>($"SELECT Id FROM {table_name}", CommandType.Text).Await();
         actual.should_be(expected, false);
     }
 
@@ -162,7 +140,7 @@ public partial class DbSpecs
     {
         var expected = copiedIds.Append(new InputIds(existing_id)).Select(i => i.Id).ToList();
         expected.Add(existing_id);
-        var actual = db.Query<Guid>($"SELECT Id FROM {table_name}", CommandType.Text);
+        var actual = db.QueryAsync<Guid>($"SELECT Id FROM {table_name}", CommandType.Text).Await();
         actual.should_be(expected, false);
     }
 
@@ -172,7 +150,7 @@ public partial class DbSpecs
         expected.Add(existing_id);
         expected.Add(existing_id);
         expected.Add(existing_id);
-        var actual = db.Query<Guid>($"SELECT Id FROM {table_name}", CommandType.Text);
+        var actual = db.QueryAsync<Guid>($"SELECT Id FROM {table_name}", CommandType.Text).Await();
         actual.should_be(expected, false);
     }
 }

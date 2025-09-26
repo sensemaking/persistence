@@ -6,7 +6,7 @@ using Sensemaking.Domain.Events;
 using NSubstitute;
 using NSubstitute.ClearExtensions;
 
-namespace Sensemaking.Test.Domain
+namespace Sensemaking.Bdd.Domain
 {
     public class SubstituteRepository : IRepository
     {

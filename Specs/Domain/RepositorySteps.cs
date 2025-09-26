@@ -6,7 +6,6 @@ using Sensemaking.Domain.Events;
 using Sensemaking.Persistence.Dapper;
 using NSubstitute;
 using NUnit.Framework;
-using Sensemaking;
 using Sensemaking.Bdd;
 using Sensemaking.Monitoring;
 using Serilog;
@@ -30,13 +29,13 @@ public partial class RepositorySpecs
     protected override void before_all()
     {
         base.before_all();
-        db.Execute($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text);
+        db.ExecuteAsync($"CREATE TABLE {collection} (Id varchar(200), Document varchar(MAX))", commandType: CommandType.Text).Await();
     }
 
 
     protected override void after_all()
     {
-        db.Execute($"DROP TABLE {collection}", commandType: CommandType.Text);
+        db.ExecuteAsync($"DROP TABLE {collection}", commandType: CommandType.Text).Await();
         base.after_all();
     }
 

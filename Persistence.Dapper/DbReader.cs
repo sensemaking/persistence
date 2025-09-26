@@ -13,9 +13,7 @@ namespace Sensemaking.Persistence.Dapper
 {
     public interface IQueryDb : ICanBeMonitored
     {
-        IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
         Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
-        T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
         Task<T> QueryAsync<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null);
     }
 
@@ -51,22 +49,10 @@ namespace Sensemaking.Persistence.Dapper
             return conn;
         }
 
-        public IEnumerable<T> Query<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
-        {
-            using var connection = CreateConnection(ConnectionString);
-            return connection.Query<T>(sql, param, commandType: commandType, commandTimeout: commandTimeout);
-        }
-
         public async Task<IReadOnlyList<T>> QueryAsync<T>(string sql, object? param = null, CommandType commandType = CommandType.Text, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
         {
             await using var connection = CreateConnection(ConnectionString);
             return (await connection.QueryAsync<T>(sql, param, commandType: commandType, commandTimeout: commandTimeout).ConfigureAwait(false)).ToList();
-        }
-
-        public T Query<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
-        {
-            using var connection = CreateConnection(ConnectionString);
-            return resultSelector(connection.QueryMultiple(sql, param, commandType: commandType, commandTimeout: commandTimeout));
         }
 
         public async Task<T> QueryAsync<T>(string sql, Func<SqlMapper.GridReader, T> resultSelector, object? param = null, CommandType commandType = CommandType.StoredProcedure, Func<SqlException, Exception>? exceptionConversion = null, int? commandTimeout = null)
