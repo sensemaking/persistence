@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Sensemaking.Bdd" Version="1.0.233" />
+        <PackageReference Include="Sensemaking.Bdd" Version="1.0.234" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="5.1.0" />
     </ItemGroup>
