@@ -19,9 +19,9 @@
 
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.17.0" />
-    <PackageReference Include="Azure.Storage.Blobs" Version="12.25.1" />
-    <PackageReference Include="Sensemaking.Core" Version="1.0.246" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.246" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.26.0" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.247" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.247" />
   </ItemGroup>
 
 </Project>
