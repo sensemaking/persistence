@@ -19,7 +19,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Sensemaking.Bdd" Version="1.0.249" />
+        <PackageReference Include="Sensemaking.Bdd" Version="1.0.250" />
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net472'">
