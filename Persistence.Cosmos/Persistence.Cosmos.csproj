@@ -18,9 +18,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Serialization" Version="1.0.267" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.267" />
-    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.54.0" />
+    <PackageReference Include="Sensemaking.Serialization" Version="1.0.268" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.268" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.54.1" />
   </ItemGroup>
 
 </Project>
