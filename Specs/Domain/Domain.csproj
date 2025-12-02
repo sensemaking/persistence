@@ -14,8 +14,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Core" Version="1.0.295" />
-    <PackageReference Include="Sensemaking.Bdd" Version="1.0.295" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.296" />
+    <PackageReference Include="Sensemaking.Bdd" Version="1.0.296" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" />
   </ItemGroup>
 
