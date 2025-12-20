@@ -18,10 +18,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Sensemaking.Bdd" Version="1.0.313" />
+        <PackageReference Include="Sensemaking.Bdd" Version="1.0.314" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.1" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
-        <PackageReference Include="NUnit3TestAdapter" Version="6.0.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="6.0.1" />
     </ItemGroup>
 
     <ItemGroup>
