@@ -18,10 +18,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Core" Version="1.0.374" />
-    <PackageReference Include="Sensemaking.Serilog" Version="1.0.374" />
-    <PackageReference Include="Sensemaking.Serialization" Version="1.0.374" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.374" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.375" />
+    <PackageReference Include="Sensemaking.Serilog" Version="1.0.375" />
+    <PackageReference Include="Sensemaking.Serialization" Version="1.0.375" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.375" />
     <PackageReference Include="NodaTime" Version="3.3.0" />
   </ItemGroup>
 
