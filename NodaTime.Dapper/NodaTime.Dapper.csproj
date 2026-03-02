@@ -20,7 +20,7 @@
     <PackageReference Include="Azure.Identity" Version="1.18.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.4" />
-    <PackageReference Include="NodaTime" Version="3.3.0" />
+    <PackageReference Include="NodaTime" Version="3.3.1" />
   </ItemGroup>
 
 </Project>
