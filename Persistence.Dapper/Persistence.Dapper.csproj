@@ -20,9 +20,9 @@
   <ItemGroup>
     <PackageReference Include="Azure.Identity" Version="1.21.0" />
     <PackageReference Include="Dapper" Version="2.1.72" />
-    <PackageReference Include="Sensemaking.Core" Version="1.0.438" />
-    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.438" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.0" />
+    <PackageReference Include="Sensemaking.Core" Version="1.0.439" />
+    <PackageReference Include="Sensemaking.Monitoring" Version="1.0.439" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.1" />
   </ItemGroup>
 
   <ItemGroup>
