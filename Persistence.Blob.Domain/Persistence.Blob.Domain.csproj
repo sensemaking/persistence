@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sensemaking.Serialization" Version="1.0.482" />
+    <PackageReference Include="Sensemaking.Serialization" Version="1.0.483" />
   </ItemGroup>
 
   <ItemGroup>
