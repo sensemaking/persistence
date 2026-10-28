@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NodaTime" Version="3.3.6" />
+    <PackageReference Include="NodaTime" Version="3.3.7" />
     <PackageReference Include="NSubstitute" Version="6.2.0" />
   </ItemGroup>
 
